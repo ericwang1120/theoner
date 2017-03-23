@@ -1,0 +1,26 @@
+app/
+    shared/
+        footer/
+            footer.component.ts|html|css|spec.ts
+        navbar/
+            navbar.component.ts|html|css|spec.ts
+	login-form/
+	    user.model.ts
+	    user.service.ts
+            login-form.component.ts|html|css|spec.ts
+	article-form/
+            article.model.ts
+            article.service.ts
+            article-form.component.ts|html|css|spec.ts
+        shared.module.ts
+    home/
+        home.component.ts|html|css|spec.ts
+    service/
+        service.component.ts|html|css|spec.ts
+    product/
+        product.component.ts|html|css|spec.ts
+    support/
+        support.component.ts|html|css|spec.ts
+    about-us
+        about-us.component.ts|html|css|spec.ts
+
