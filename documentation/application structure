@@ -1,26 +1,53 @@
 app/
     shared/
+        shared.module.ts
         footer/
-            footer.component.ts|html|css|spec.ts
+            footer.component.ts
+            footer.component.html
+            footer.component.css
+            footer.component.spec.ts
         navbar/
-            navbar.component.ts|html|css|spec.ts
+            navbar.component.ts
+            navbar.component.html
+            navbar.component.css
+            navbar.component.spec.ts
 	login-form/
 	    user.model.ts
 	    user.service.ts
-            login-form.component.ts|html|css|spec.ts
+            login-form.component.ts
+            login-form.component.html
+            login-form.component.css
+            login-form.component.spec.ts
 	article-form/
             article.model.ts
             article.service.ts
-            article-form.component.ts|html|css|spec.ts
-        shared.module.ts
+            article-form.component.ts
+            article-form.component.html
+            article-form.component.css
+            article-form.component.spec.ts
     home/
-        home.component.ts|html|css|spec.ts
+        home.component.ts
+        home.component.html
+        home.component.css
+        home.component.spec.ts
     service/
-        service.component.ts|html|css|spec.ts
+        service.component.ts
+        service.component.html
+        service.component.css
+        service.component.spec.ts
     product/
-        product.component.ts|html|css|spec.ts
+        product.component.ts
+        product.component.html
+        product.component.css
+        product.component.spec.ts
     support/
-        support.component.ts|html|css|spec.ts
+        support.component.ts
+        support.component.html
+        support.component.css
+        support.component.spec.ts
     about-us
-        about-us.component.ts|html|css|spec.ts
+        about-us.component.ts
+        about-us.component.html
+        about-us.component.css
+        about-us.component.spec.ts
 
