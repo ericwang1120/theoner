@@ -1,4 +1,4 @@
-dapp/
+app/
     core/
         user/
             user.model.ts
@@ -38,26 +38,36 @@ dapp/
         home.component.html
         home.component.css
         home.component.spec.ts
+        home.module.ts
+        home-routing.module.ts
     service/
         service.component.ts
         service.component.html
         service.component.css
         service.component.spec.ts
+        service.module.ts
+        service-routing.module.ts
     product/
         product.component.ts
         product.component.html
         product.component.css
         product.component.spec.ts
+        product.module.ts
+        product-routing.module.ts
     support/
         support.component.ts
         support.component.html
         support.component.css
         support.component.spec.ts
+        support.module.ts
+        support-routing.module.ts
     about-us/
         about-us.component.ts
         about-us.component.html
         about-us.component.css
         about-us.component.spec.ts
+        about-us.module.ts
+        about-us-routing.module.ts
     app.component.css
     app.component.html
     app.component.spec.ts
