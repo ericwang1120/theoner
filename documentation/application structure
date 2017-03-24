@@ -1,6 +1,12 @@
-app/
+dapp/
+    core/
+        user/
+            user.model.ts
+            user.service.ts
+        article/
+            article.model.ts
+            article.service.ts
     shared/
-        shared.module.ts
         footer/
             footer.component.ts
             footer.component.html
@@ -11,20 +17,22 @@ app/
             navbar.component.html
             navbar.component.css
             navbar.component.spec.ts
-	login-form/
-	    user.model.ts
-	    user.service.ts
-            login-form.component.ts
-            login-form.component.html
-            login-form.component.css
-            login-form.component.spec.ts
-	article-form/
-            article.model.ts
-            article.service.ts
+        toolbar/
+            toolbar.component.ts
+            toolbar.component.html
+            toolbar.component.css
+            toolbar.component.spec.ts
+        article-form/
             article-form.component.ts
             article-form.component.html
             article-form.component.css
             article-form.component.spec.ts
+        login-form/
+            login-form.component.ts
+            login-form.component.html
+            login-form.component.css
+            login-form.component.spec.ts
+        shared.module.ts
     home/
         home.component.ts
         home.component.html
@@ -45,9 +53,14 @@ app/
         support.component.html
         support.component.css
         support.component.spec.ts
-    about-us
+    about-us/
         about-us.component.ts
         about-us.component.html
         about-us.component.css
         about-us.component.spec.ts
-
+    app.component.css
+    app.component.html
+    app.component.spec.ts
+    app.component.ts
+    app.module.ts
+    app-routing.module.ts
