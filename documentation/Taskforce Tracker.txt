@@ -1,0 +1,48 @@
+Task 1: 	Login module implementation
+	Basic requirements:
+
+	1. theoner.com first page shows "login" link
+	2. User clicks login link, page shows the login module with inputs: user name, password and submit button.
+	3. User supplies user name and password value, then click on submit button. Login module calls a php page passing the values
+	4. Receiving the submit request, php page to do:
+	   A. if the user name is theoner and password is trueoner, then returns status true
+	   B. else return status false
+	4. Receiving the login status, the module will
+	   A. if a true status, shows content of "Congrats, you are now logged in."
+	   B. if a false status, 
+		  a. alert "User name or password not valid, please try again."
+		  b. stay with login page after user click on ok.
+		  
+Task initiated: 2017/03/27
+Task Owner: Eric
+	Daily status update:
+		2017/03/27:		% completion
+					Lesson learnt:
+					Issue encountered:
+		2017/03/28:		% completion
+					Lesson learnt:
+					Issue encountered:
+	
+	
+	
+	
+======================================================================================================================================
+Task 2: 	Packaging, Release and Test
+	Basic requirements:
+
+	1. Explore the best practise of packaging, release process and test methodology
+	2. Document the detailed steps (dummy guide with explannation) for packaging
+	3. Document the detailed steps (dummy guide with explannation) for deployment/release
+	4. Angular2 testing best practise presentation (example project: Heros)
+	5. Heros sample structure explannation
+	6. Heros packaging and release presentation
+		  
+Task initiated: 2017/03/27
+Task Owner: Thomas
+	Daily status update:
+		2017/03/27:		% completion
+					Lesson learnt:
+					Issue encountered:
+		2017/03/28:		% completion
+					Lesson learnt:
+					Issue encountered:
