@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { LoginModule } from './login/login.module';
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { ProductModule } from './product/product.module';
 import { ServiceModule } from './service/service.module';
 import { SupportModule } from './support/support.module';
 import { SharedModule } from './shared/shared.module';
+
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
+
+    LoginModule,
     AboutModule,
     HomeModule,
     ProductModule,
