@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "title": "product1",
+            "content": "product content 1",
+            "type": "product"
+        },
+        {
+            "id": 2,
+            "title": "product2",
+            "content": "product content 2",
+            "type": "product"
+        },
+        {
+            "id": 3,
+            "title": "product3",
+            "content": "product content 3",
+            "type": "product"
+        },
+        {
+            "id": 4,
+            "title": "product4",
+            "content": "product content 4",
+            "type": "product"
+        }
+    ]
+}

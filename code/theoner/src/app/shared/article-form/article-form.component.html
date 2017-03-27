@@ -1,0 +1,4 @@
+<li *ngFor="let article of articles">
+    <button (click)="selectArticle(article)">{{article.title}}</button>
+</li>
+<div *ngIf="selectedArticle">{{selectedArticle.content}}</div>
