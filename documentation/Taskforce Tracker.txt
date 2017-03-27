@@ -8,11 +8,14 @@ Task 1: 	Login module implementation
 	   A. if the user name is theoner and password is trueoner, then returns status true
 	   B. else return status false
 	4. Receiving the login status, the module will
-	   A. if a true status, shows content of "Congrats, you are now logged in."
+	   A. if a true status
+		  a. shows content of "Congrats, you are now logged in."
+		  b. change the text of link to be "logout"
 	   B. if a false status, 
 		  a. alert "User name or password not valid, please try again."
 		  b. stay with login page after user click on ok.
-		  
+    5. User click "logout" link, text changed to be "login" and page content reset as first page.
+	
 Task initiated: 2017/03/27
 Task Owner: Eric
 	Daily status update:
