@@ -22,11 +22,11 @@ Task 1: 	Login module implementation
 Task initiated: 2017/03/27
 Task Owner: Eric
 	Daily status update:
-		2017/03/27:		% completion
-					Lesson learnt:
+		2017/03/27:		30% completion
+					Lesson learnt: Basic workflow of login, local storage
 					Issue encountered:
-		2017/03/28:		% completion
-					Lesson learnt:
+		2017/03/28:		70% completion
+					Lesson learnt: login services, forms created.
 					Issue encountered:
 	
 	
