@@ -1,15 +1,11 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <span class="sr-only">Theoner</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <a class="navbar-brand" href="">Theoner</a>
-        </div>
-
-        <div class="">
-            <a [routerLink]="['login']">login</a>
-        </div>
+<nav class="navbar navbar-toggleable-md navbar-light">
+    <a class="navbar-brand" [routerLink]="['/']">Theoner</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a *ngIf="!checkLoginStatus()" class="nav-link" [routerLink]="['login']">login</a>
+                <a *ngIf="checkLoginStatus()" class="nav-link" (click)="logout()" [routerLink]="['login']">logout</a>
+            </li>
+        </ul>
     </div>
 </nav>
