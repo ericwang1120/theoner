@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { fakeBackendProvider } from './core/helpers/fack-backend';
+// import { fakeBackendProvider } from './core/helpers/fack-backend';
 import { AlertService } from './shared/alert/alert.service';
 
 import { RegisterModule } from './register/register.module';
@@ -43,8 +43,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     // providers used to create fake backend
-    fakeBackendProvider,
-    MockBackend,
+    // fakeBackendProvider,
+    // MockBackend,
     BaseRequestOptions,
     //providers used to provide alerts
     AlertService
