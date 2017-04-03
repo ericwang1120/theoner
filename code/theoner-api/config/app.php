@@ -169,6 +169,7 @@ Illuminate\View\ViewServiceProvider::class,
 Laravel\Tinker\TinkerServiceProvider::class,
 Laravel\Passport\PassportServiceProvider::class,
 Barryvdh\Cors\ServiceProvider::class,
+Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
 /*
 * Application Service Providers...

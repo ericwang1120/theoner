@@ -1,10 +1,10 @@
-import { TheonerPage } from './app.po';
+import { TheonerTestPage } from './app.po';
 
-describe('theoner App', () => {
-  let page: TheonerPage;
+describe('theoner-test App', () => {
+  let page: TheonerTestPage;
 
   beforeEach(() => {
-    page = new TheonerPage();
+    page = new TheonerTestPage();
   });
 
   it('should display message saying app works', () => {

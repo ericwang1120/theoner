@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class TheonerPage {
+export class TheonerTestPage {
   navigateTo() {
     return browser.get('/');
   }
