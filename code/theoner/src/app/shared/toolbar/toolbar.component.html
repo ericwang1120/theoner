@@ -1,7 +1,25 @@
-<nav class="navbar navbar-toggleable-md navbar-light">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
     <a class="navbar-brand" [routerLink]="['/']">Theoner</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/product']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Product</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/service']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Service</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/support']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Support</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">About</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
             <li class="nav-item active">
                 <a *ngIf="!checkLoginStatus()" class="nav-link" [routerLink]="['login']">login</a>
                 <a *ngIf="checkLoginStatus()" class="nav-link" (click)="logout()" [routerLink]="['login']">logout</a>

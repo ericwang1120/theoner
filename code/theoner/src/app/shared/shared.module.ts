@@ -7,11 +7,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { AlertComponent } from './alert/alert.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  declarations: [NavbarComponent, ToolbarComponent, ArticleFormComponent, AlertComponent],
-  exports: [NavbarComponent, ToolbarComponent, ArticleFormComponent, AlertComponent, CommonModule, FormsModule, RouterModule]
+  declarations: [NavbarComponent, ToolbarComponent, ArticleFormComponent, AlertComponent, FooterComponent],
+  exports: [NavbarComponent, ToolbarComponent, ArticleFormComponent, AlertComponent, FooterComponent, CommonModule, FormsModule, RouterModule]
 })
 
 export class SharedModule {
