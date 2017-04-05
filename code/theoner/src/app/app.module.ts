@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NotFoundComponent } from './not-found.component';
 
 // import { fakeBackendProvider } from './core/helpers/fack-backend';
 import { AlertService } from './shared/alert/alert.service';
@@ -24,10 +25,10 @@ import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),
@@ -39,7 +40,8 @@ import { SharedModule } from './shared/shared.module';
     ProductModule,
     ServiceModule,
     SupportModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     // providers used to create fake backend
