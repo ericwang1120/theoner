@@ -15,3 +15,5 @@ use Illuminate\Http\Request;
 
 Route::post('/authenticate','AuthenticateController@authenticate');
 Route::post('/user','UserController@store');
+
+Route::resource('article', 'ArticleController');

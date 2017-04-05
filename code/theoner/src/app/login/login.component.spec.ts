@@ -18,7 +18,6 @@ describe('', () => {
     let comp: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
     let de: DebugElement;
-    let el: HTMLElement;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
