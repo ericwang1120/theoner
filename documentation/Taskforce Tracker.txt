@@ -1,6 +1,11 @@
 Agile Management Tool: Please register account and have a quick look
 ***https://tree.taiga.io/project/phonis-onenessvolunteer/taskboard/angular-2-poc*** 
 
+FTP Username: eric_wang@surfcareer.com
+FTP Server: ftp.surfcareer.com
+FTP port: 21
+
+
 Task 1: 	Login module implementation
 	Basic requirements:
 
