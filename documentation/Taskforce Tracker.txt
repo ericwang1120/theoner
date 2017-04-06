@@ -4,7 +4,7 @@ Agile Management Tool: Please register account and have a quick look
 FTP Username: eric_wang@surfcareer.com
 FTP Server: ftp.surfcareer.com
 FTP port: 21
-
+To validate: http://www.theoner.com/angular2
 
 Task 1: 	Login module implementation
 	Basic requirements:
