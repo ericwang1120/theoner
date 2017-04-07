@@ -1,0 +1,13 @@
+1.ng eject
+2.devServer: {
+        historyApiFallback: {
+            disableDotRule: true,
+            htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
+        }
+    }
+3. set webpack.config:
+baseUrl: process.env.NODE_ENV == 'production' ? '/theoner/' : '/'
+4. <base href="<%= htmlWebpackPlugin.options.baseUrl %>">
+
+5. package.json: 
+        "build-production": "set NODE_ENV=production&&webpack -p",
