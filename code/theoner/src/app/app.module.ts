@@ -20,6 +20,7 @@ import { ProductModule } from './product/product.module';
 import { ServiceModule } from './service/service.module';
 import { SupportModule } from './support/support.module';
 import { SharedModule } from './shared/shared.module';
+import { ArticleCreateModule } from './article-create/article-create.module';
 
 
 
@@ -40,6 +41,7 @@ import { SharedModule } from './shared/shared.module';
     ProductModule,
     ServiceModule,
     SupportModule,
+    ArticleCreateModule,
     SharedModule.forRoot(),
     AppRoutingModule
   ],
