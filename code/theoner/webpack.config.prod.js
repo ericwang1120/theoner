@@ -18,8 +18,8 @@ const deployUrl = "/test/";
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const API_URL = process.env.API_URL = 'http://localhost/theoner-api';
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+const API_URL = process.env.API_URL = 'http://www.theoner.com/theoner/api';
 const METADATA = {
     API_URL: API_URL,
     ENV: ENV,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User, UserService } from '../../core/user';
-
+import { User } from '../../core/user';
 
 @Component({
   moduleId: module.id,
@@ -12,7 +11,7 @@ import { User, UserService } from '../../core/user';
 export class ToolbarComponent implements OnInit {
   currentUser: User;
 
-  constructor(private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

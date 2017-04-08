@@ -1,1 +1,36 @@
-Create Article
+<div class="col-xs-12" style="height:30px;">
+</div>
+<div class="container-fluid">
+    <form action="">
+        <div class="row">
+            <label for="articleTitle" class="col-1 col-form-label">Title</label>
+            <div class="col-8">
+                <input class="form-control" type="text" id="article-title" placeholder="Please input article title">
+            </div>
+
+            <label for="articleType" class="col-1 col-form-label">Article Type</label>
+            <div class="col-2">
+                <select class="form-control" id="article-type">
+                <option>product</option>
+                <option>service</option>
+                <option>support</option>
+                <option>about</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-xs-12" style="height:30px;"></div>
+
+        <div class="form-group row">
+            <label for="articleContent" class="col-1 col-form-label">Content</label>
+            <div class="col-11">
+                <textarea class="form-control" type="text" id="article-content" placeholder="Please input article content" rows="20"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary col-2 offset-1">Submit</button>
+
+        <button class="btn btn-secondary col-2">Back</button>
+
+    </form>
+</div>

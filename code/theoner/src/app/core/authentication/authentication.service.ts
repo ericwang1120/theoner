@@ -3,6 +3,9 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
+declare var API_URL: string;
+
+
 @Injectable()
 export class AuthenticationService {
     constructor(private http: Http) { }
@@ -11,7 +14,7 @@ export class AuthenticationService {
     options = new RequestOptions({ headers: this.headers });
 
     login(username: string, password: string) {
-        return this.http.post('http://localhost/theoner-api/oauth/token',
+        return this.http.post(API_URL+'/oauth/token',
             JSON.stringify({
                 "grant_type": "password",
                 "client_id": "2",
