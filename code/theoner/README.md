@@ -1,7 +1,25 @@
 # Theoner
+This project is the official website of [theoner](http://www.theoner.com/) which is rewitten into Angular 2 and PHP Laravel. Here is the front-end documentation.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0. As we have already run `ng eject`, Some commands can no longer be used
+## Getting Started
+To get you started you can simply clone the `theoner` repository and install the dependencies:
 
+### Prerequisites
+You need git to clone the `theoner` repository. You can get git from [here](https://git-scm.com/).
+
+We also use a number of Node.js tools to initialize and test `theoner`. You must have Node.js
+and its package manager (npm) installed. You can get them from [here](https://nodejs.org/en/).
+### Clone `theoner`
+Clone the `theoner` repository using git:
+```
+git clone https://github.com/xiaobica/theoner.git
+cd theoner/code/theoner
+```
+### Install Dependencies
+we can simply do:
+```
+npm install
+```
 ## Develop on development environment
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -9,14 +27,5 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 Run `npm run build` to build the project on production environment. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
+Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
