@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 
 declare var API_URL: string;
-
+declare var localStorage;
 
 @Injectable()
 export class AuthenticationService {
