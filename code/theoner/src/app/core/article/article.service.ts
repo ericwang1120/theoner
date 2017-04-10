@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
@@ -10,21 +10,37 @@ import 'rxjs/add/operator/filter';
 
 import { Article } from './article.model';
 
+declare var API_URL: string;
+
 @Injectable()
 export class ArticleService {
-    private articlesUrl = "assets/articles.json";
+    private articlesUrl = API_URL + "article";
     private articles: Article[] = [];
 
+    headers = new Headers({ 'Content-Type': 'application/json' });
+    options = new RequestOptions({ headers: this.headers });
 
     constructor(private http: Http) {
-
+        console.log(API_URL);
     }
 
 
 
-    getArticles(type:string): Observable<Article[]> {
+    getArticles(type: string): Observable<Article[]> {
         return this.http.get(this.articlesUrl)
-            .map(result=>result.json().data.filter(data => data.type == type)||{})
+            .map(result => result.json().data.filter(data => data.type == type) || {})
+            .catch(this.handleError);
+    }
+
+    createArticle(article: Article): Observable<Article> {
+        return this.http.post(this.articlesUrl, JSON.stringify({
+            data: [{
+                title: article.title,
+                content: article.content,
+                type: article.type,
+                author: "theoner"
+            }]
+        }), this.options).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 

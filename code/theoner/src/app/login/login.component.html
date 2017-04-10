@@ -1,4 +1,3 @@
-    
 <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <label for="username" class="col-1 col-form-label">Username</label>

@@ -170,10 +170,11 @@ Laravel\Tinker\TinkerServiceProvider::class,
 Laravel\Passport\PassportServiceProvider::class,
 Barryvdh\Cors\ServiceProvider::class,
 Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+CloudCreativity\LaravelJsonApi\ServiceProvider::class,
 
-/*
-* Application Service Providers...
-*/
+    /*
+    * Application Service Providers...
+    */
 App\Providers\AppServiceProvider::class,
 App\Providers\AuthServiceProvider::class,
 // App\Providers\BroadcastServiceProvider::class,

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Article;
+
+use CloudCreativity\LaravelJsonApi\Http\Controllers\JsonApiController;
+use Mockery\CountValidator\Exception;
 
 class ArticleController extends Controller
 {
@@ -16,7 +20,10 @@ class ArticleController extends Controller
     {
         //
         $articles=Article::all();
-        return $articles;
+
+        return response()->json([
+        'data' => $articles,
+    ]);
     }
 
     /**
@@ -39,6 +46,22 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $requestData=$request->all()['data'][0];
+        try{
+            Article::create([
+                'title'=>$requestData['title'],
+                'content'=>$requestData['content'],
+                'type'=>$requestData['type'],
+                'author'=>$requestData['author']
+            ]);
+        } catch (QueryException $ex){
+            return response()->json([
+                'errors'=>array(['details'=>"fail"]),]
+            );
+        }
+            return response()->json([
+                'data' => $requestData,
+            ]);
     }
 
     /**
