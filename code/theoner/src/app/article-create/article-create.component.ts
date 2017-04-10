@@ -12,7 +12,9 @@ import { AlertService } from '../shared/alert/alert.service';
   providers: [ArticleService]
 })
 export class ArticleCreateComponent implements OnInit {
-  article = new Article();
+  selectedArticle = new Article();
+  articles: Article[];
+
   errorMessage: String;
 
   constructor(
@@ -20,23 +22,35 @@ export class ArticleCreateComponent implements OnInit {
     private alertService: AlertService) { }
 
   ngOnInit() {
-    this.article.type = "product";
+    this.selectedArticle.type = "product";
+    this.getArticles('all');
   }
 
+  getArticles(type: string): void {
+    this.articleService.getArticles(type)
+      .subscribe(
+      articles => this.articles = articles,
+      error => this.errorMessage = <any>error)
+  }
 
   createArticle(article: Article): void {
     this.articleService.createArticle(article)
       .subscribe(
       data => {
         this.alertService.success("success");
+        this.articles.push(this.selectedArticle);
       },
       error => {
         this.alertService.error("fail");
       });
   }
 
+  selectArticle(article: Article): void {
+    this.selectedArticle = article;
+  }
+
   onSubmit(e) {
     e.preventDefault();
-    this.createArticle(this.article);
+    this.createArticle(this.selectedArticle);
   }
 }

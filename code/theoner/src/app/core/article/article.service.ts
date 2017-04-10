@@ -28,7 +28,7 @@ export class ArticleService {
 
     getArticles(type: string): Observable<Article[]> {
         return this.http.get(this.articlesUrl)
-            .map(result => result.json().data.filter(data => data.type == type) || {})
+            .map(result => result.json().data.filter(data => type=='all'?true:data.type == type) || {})
             .catch(this.handleError);
     }
 
