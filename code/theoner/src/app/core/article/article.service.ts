@@ -14,7 +14,7 @@ declare var API_URL: string;
 
 @Injectable()
 export class ArticleService {
-    private articlesUrl = API_URL + "article";
+    private articlesUrl = API_URL + "api/article";
     private articles: Article[] = [];
 
     headers = new Headers({ 'Content-Type': 'application/json' });
@@ -44,6 +44,22 @@ export class ArticleService {
             .catch(this.handleError);
     }
 
+    deleteArticle(article:Article):Observable<any>{
+        return this.http.delete(this.articlesUrl+'/'+article.id, this.options).map(result => result.json().data || {})
+            .catch(this.handleError);
+    }
+
+    updateArticle(article:Article):Observable<Article>{
+        return this.http.put(this.articlesUrl+'/'+article.id, JSON.stringify({
+            data: [{
+                title: article.title,
+                content: article.content,
+                type: article.type,
+                author: "theoner"
+            }]
+        }), this.options).map(result => result.json().data || {})
+            .catch(this.handleError);
+    }
     private handleError(error: Response | any) {
         let errMsg: string;
         if (error instanceof Response) {

@@ -14,9 +14,9 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   providers: [ArticleService]
 })
 export class ArticleCreateComponent implements OnInit {
-  selectedArticle = new Article();
+  selectedArticle: Article;
   articles: Article[];
-  submitFunction = "create";
+  submitType = "create";
 
   errorMessage: String;
 
@@ -26,8 +26,13 @@ export class ArticleCreateComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.selectedArticle.type = "product";
+    this.defaultSelect();
     this.getArticles('all');
+  }
+
+  defaultSelect() {
+    this.selectedArticle = new Article();
+    this.selectedArticle.type = "product";
   }
 
   // Call service funtions
@@ -43,46 +48,74 @@ export class ArticleCreateComponent implements OnInit {
       .subscribe(
       data => {
         this.alertService.success("success");
-        this.articles.push(this.selectedArticle);
+        this.getArticles('all');
+        this.defaultSelect();
       },
       error => {
         this.alertService.error("fail");
       });
   }
 
-  updateArticle() {
-
+  updateArticle(article: Article) {
+    this.articleService.updateArticle(article)
+      .subscribe(
+      data => {
+        this.alertService.success("success");
+        this.getArticles('all');
+      },
+      error => {
+        this.alertService.error("fail");
+      });
   }
 
-  deleteArticle() {
-
+  deleteArticle(article: Article) {
+    this.articleService.deleteArticle(article)
+      .subscribe(
+      data => {
+        this.alertService.success("success");
+        this.getArticles('all');
+        this.defaultSelect();
+      },
+      error => {
+        this.alertService.error("fail");
+      });
   }
-  //Used by users on selecting an article
+
+  //Used by users click on add button
+  addArticle(): void {
+    this.defaultSelect();
+  }
+
+  //Used by users when selecting an article
   selectArticle(article: Article): void {
     this.selectedArticle = article;
   }
 
-  //Used by users on clicking OK
+  //Used by users when clicking OK
   confirmSubmit() {
-    switch (this.submitFunction) {
-      case ("create"): this.createArticle(this.selectedArticle);
+    switch (this.submitType) {
+      case ("create"): { this.createArticle(this.selectedArticle); break; }
+      case ("update"): { this.updateArticle(this.selectedArticle); break; }
+      case ("delete"): { this.deleteArticle(this.selectedArticle); break; }
     }
   }
 
   onSubmit(e) {
     if (this.articles.indexOf(this.selectedArticle) !== -1) {
-      this.submitFunction = "update";
+      this.submitType = "update";
     } else {
-      this.submitFunction = "create";
+      this.submitType = "create";
     }
   }
-  //Open delete model
+
+  //Open confirm model
   modalTitle: string;
   open(modal, type: string) {
     this.modalService.open(modal);
     this.modalTitle = this.setModalTitle(type);
   }
 
+  //Set Model Title based on submitType
   setModalTitle(type: any) {
     let modalTitleMap = {
       "create": "Create Article",

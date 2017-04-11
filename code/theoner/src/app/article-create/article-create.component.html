@@ -1,29 +1,28 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 bg-faded" style="height:670px">
+        <div class="col-3 bg-faded" style="height:620px;overflow-y: scroll;">
             <div class="row">
                 <ul class="list-group col-12">
+                    <li class="list-group-item" (click)="addArticle()" [ngClass]="{'active':selectedArticle.id==null}">
+                        Add
+                    </li>
                     <li class="list-group-item" *ngFor="let article of articles" (click)="selectArticle(article)" [ngClass]="{'active':article==selectedArticle}">
                         <div class="col-8">
                             {{article.title}}
                         </div>
                         <div class="col-4">
-                            <button type="button" class="close" (click)="(submitFunction='delete')&&open(confirmModal,'delete')">
+                            <button type="button" class="close" (click)="(submitType='delete')&&open(confirmModal,'delete')">
                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                     </li>
-                    <div class="list-group-item">
-                        Add
-                    </div>
                 </ul>
             </div>
-
         </div>
 
         <div class="col-9">
             <div class="col-xs-12" style="height:20px;"></div>
-            <form name="form" #f="ngForm" (ngSubmit)="f.form.valid  && open(confirmModal,submitFunction)" novalidate>
+            <form name="form" #f="ngForm" (ngSubmit)="f.form.valid  && open(confirmModal,submitType)" novalidate>
                 <div class="row">
                     <label for="articleTitle" class="col-1 col-form-label">Title</label>
                     <div class="col-6">
@@ -32,7 +31,7 @@
 
                     <label for="articleType" class="col-2 col-form-label">Article Type</label>
                     <div class="col-3">
-                        <select name="type" class="form-control" id="article-type" [(ngModel)]="selectedArticle.type">
+                        <select name="type" class="form-control" id="article-type" [(ngModel)]="selectedArticle.type" required>
                             <option value="product" selected>product</option>
                             <option value="service">service</option>
                             <option value="support">support</option>
@@ -42,7 +41,7 @@
                 </div>
 
                 <div class="col-8 offset-md-1 text-danger" style="height:30px;">
-                    <div *ngIf="f.submitted && !title.valid">Title is required</div>
+                    <div *ngIf="!title.valid">Title is required</div>
                 </div>
 
                 <div class="form-group row">
@@ -53,7 +52,7 @@
                 </div>
 
                 <div class="col-8 offset-md-1 text-danger" style="height:30px;">
-                    <div *ngIf="f.submitted && !content.valid">Content is required</div>
+                    <div *ngIf="!content.valid">Content is required</div>
                 </div>
 
                 <button type="submit" class="btn btn-primary col-2 offset-1" (click)="onSubmit($event)">Submit</button>

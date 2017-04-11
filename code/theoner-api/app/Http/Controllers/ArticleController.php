@@ -96,6 +96,22 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $requestData=$request->all()['data'][0];
+        try{
+            Article::find($id)->update([
+                'title'=>$requestData['title'],
+                'content'=>$requestData['content'],
+                'type'=>$requestData['type'],
+                'author'=>$requestData['author']
+            ]);
+        } catch (Exception $ex){
+            return response()->json([
+                    'errors'=>array(['details'=>"fail"]),]
+            );
+        }
+        return response()->json([
+            'data' => $requestData,
+        ]);
     }
 
     /**
@@ -107,5 +123,16 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        try{
+            Article::destroy($id);
+        } catch (Exception $ex){
+            return response()->json([
+                    'errors'=>array(['details'=>"fail"]),]
+            );
+        }
+        return response()->json([
+            'data' => array(['details'=>"success"])
+        ]);
+
     }
 }

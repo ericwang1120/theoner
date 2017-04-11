@@ -14,7 +14,7 @@ export class AuthenticationService {
     options = new RequestOptions({ headers: this.headers });
 
     login(username: string, password: string) {
-        return this.http.post(API_URL+'/oauth/token',
+        return this.http.post(API_URL+'oauth/token',
             JSON.stringify({
                 "grant_type": "password",
                 "client_id": "2",
