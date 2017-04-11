@@ -1,14 +1,29 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3 bg-faded" style="height:670px">
-            <li *ngFor="let article of articles">
-                <button (click)="selectArticle(article)">{{article.title}}</button>
-            </li>
+            <div class="row">
+                <ul class="list-group col-12">
+                    <li class="list-group-item" *ngFor="let article of articles" (click)="selectArticle(article)" [ngClass]="{'active':article==selectedArticle}">
+                        <div class="col-8">
+                            {{article.title}}
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="close" (click)="(submitFunction='delete')&&open(confirmModal,'delete')">
+                               <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </li>
+                    <div class="list-group-item">
+                        Add
+                    </div>
+                </ul>
+            </div>
+
         </div>
 
         <div class="col-9">
             <div class="col-xs-12" style="height:20px;"></div>
-            <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit($event)" novalidate>
+            <form name="form" #f="ngForm" (ngSubmit)="f.form.valid  && open(confirmModal,submitFunction)" novalidate>
                 <div class="row">
                     <label for="articleTitle" class="col-1 col-form-label">Title</label>
                     <div class="col-6">
@@ -41,11 +56,25 @@
                     <div *ngIf="f.submitted && !content.valid">Content is required</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary col-2 offset-1">Submit</button>
-
-                <button class="btn btn-secondary col-2">Back </button>
+                <button type="submit" class="btn btn-primary col-2 offset-1" (click)="onSubmit($event)">Submit</button>
 
             </form>
         </div>
     </div>
 </div>
+
+<template #confirmModal let-c="close">
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="c()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="c(confirmSubmit())">OK</button>
+    <button type="button" class="btn btn-secondary" (click)="c()">Close</button>
+  </div>
+</template>
