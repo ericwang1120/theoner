@@ -4,3 +4,8 @@ theoner-footer {
     left: 0;
     right: 0;
 }
+
+theoner-alert {
+    opacity: 1;
+    transition: opacity 500ms;
+}

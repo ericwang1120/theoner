@@ -1,3 +1,3 @@
-<div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
+<div [@flyInOut]="status" class="theoner-alert" *ngIf="message" ngbPopover="message.text" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">
     {{message.text}}
 </div>

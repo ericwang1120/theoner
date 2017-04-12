@@ -17,7 +17,6 @@ export class ArticleCreateComponent implements OnInit {
   selectedArticle: Article;
   articles: Article[];
   submitType = "create";
-
   errorMessage: String;
 
   constructor(
@@ -53,6 +52,8 @@ export class ArticleCreateComponent implements OnInit {
       },
       error => {
         this.alertService.error("fail");
+      },
+      () => {
       });
   }
 
@@ -61,11 +62,13 @@ export class ArticleCreateComponent implements OnInit {
       .subscribe(
       data => {
         this.alertService.success("success");
-        this.getArticles('all');
       },
       error => {
         this.alertService.error("fail");
-      });
+      },
+      () => {
+      }
+      );
   }
 
   deleteArticle(article: Article) {
@@ -78,6 +81,8 @@ export class ArticleCreateComponent implements OnInit {
       },
       error => {
         this.alertService.error("fail");
+      },
+      () => {
       });
   }
 

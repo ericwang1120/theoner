@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, OnInit } from '@angular/core';
 import { HttpModule, BaseRequestOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,6 +34,7 @@ import { ArticleCreateModule } from './article-create/article-create.module';
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),
+    BrowserAnimationsModule,
 
     RegisterModule,
     LoginModule,
