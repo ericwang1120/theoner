@@ -11,6 +11,16 @@ import { User } from '../../core/user';
 export class ToolbarComponent implements OnInit {
   currentUser: User;
 
+  linkList = [
+    { linkPath: '/home', linkName: 'Home' },
+    { linkPath: '/product', linkName: 'Product' },
+    { linkPath: '/service', linkName: 'Service' },
+    { linkPath: '/support', linkName: 'Support' },
+    { linkPath: '/about', linkName: 'About' }
+  ];
+
+  isCollapsed = true;
+
   constructor() { }
 
   ngOnInit(): void {
