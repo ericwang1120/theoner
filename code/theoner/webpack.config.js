@@ -218,7 +218,7 @@ module.exports = {
                 "favicon.ico"
             ],
             "globOptions": {
-                "cwd": "D:\\workspace\\oneness\\theoner.com\\code\\theoner\\src",
+                "cwd": ".\\src",
                 "dot": true,
                 "ignore": "**/.gitkeep"
             }
