@@ -28,7 +28,7 @@ export class ArticleService {
 
     getArticles(type: string): Observable<Article[]> {
         return this.http.get(this.articlesUrl)
-            .map(result => result.json().data.filter(data => type=='all'?true:data.type == type) || {})
+            .map(result => result.json().data.filter(data => type == 'all' ? true : data.type == type) || {})
             .catch(this.handleError);
     }
 
@@ -44,13 +44,13 @@ export class ArticleService {
             .catch(this.handleError);
     }
 
-    deleteArticle(article:Article):Observable<any>{
-        return this.http.delete(this.articlesUrl+'/'+article.id, this.options).map(result => result.json().data || {})
+    deleteArticle(article: Article): Observable<any> {
+        return this.http.delete(this.articlesUrl + '/' + article.id, this.options).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
-    updateArticle(article:Article):Observable<Article>{
-        return this.http.put(this.articlesUrl+'/'+article.id, JSON.stringify({
+    updateArticle(article: Article): Observable<Article> {
+        return this.http.put(this.articlesUrl + '/' + article.id, JSON.stringify({
             data: [{
                 title: article.title,
                 content: article.content,
@@ -59,6 +59,26 @@ export class ArticleService {
             }]
         }), this.options).map(result => result.json().data || {})
             .catch(this.handleError);
+    }
+
+    uploadImages(event) {
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            let file: File = fileList[0];
+            let formData: FormData = new FormData();
+            formData.append('uploadFile', file, file.name);
+            let headers = new Headers();
+            headers.append('Content-Type', 'multipart/form-data');
+            headers.append('Accept', 'application/json');
+            let options = new RequestOptions({ headers: headers });
+            this.http.post(API_URL, formData, options)
+                .map(res => res.json())
+                .catch(error => Observable.throw(error))
+                .subscribe(
+                data => console.log('success'),
+                error => console.log(error)
+                )
+        }
     }
     private handleError(error: Response | any) {
         let errMsg: string;

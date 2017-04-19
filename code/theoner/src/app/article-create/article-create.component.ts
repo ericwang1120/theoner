@@ -130,5 +130,7 @@ export class ArticleCreateComponent implements OnInit {
     return modalTitleMap[type];
   }
 
-
+  fileChange(event) {
+    this.articleService.uploadImages(event);
+  }
 }

@@ -7,7 +7,7 @@ import { ArticleFormComponent } from '../shared';
   moduleId: module.id,
   selector: 'theoner-product',
   templateUrl: '../shared/article-form/article-form.component.html',
-  styleUrls: ['product.component.css'],
+  styleUrls: ['../shared/article-form/article-form.component.css'],
   providers: [ArticleService]
 
 })

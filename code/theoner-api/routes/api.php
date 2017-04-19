@@ -17,3 +17,8 @@ Route::post('/authenticate','AuthenticateController@authenticate');
 Route::post('/user','UserController@store');
 
 Route::resource('article', 'ArticleController');
+
+Route::post('/article/{articleId}/image','ArticleImageController@store');
+Route::delete('/image/{id}','ArticleImageController@destroy');
+Route::put('/image/{id}','ArticleImageController@update');
+Route::get('/article/{articleId}/image','ArticleImageController@index');

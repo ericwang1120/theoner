@@ -1,35 +1,21 @@
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<div class="w3-container w3-center w3-animate-opacity productbackground">
-<p>product</p>
- <div class="row ">
-      <div class="list-group col-2">
-        <li *ngFor="let article of articles">
-          <a class="list-group-item list-group-item-action w3-ul w3-card-4" (click)="selectArticle(article)">{{article.title}}</a>
-        </li>
 
-      </div>
-      <div class="col-8 ">
-      <div *ngIf="selectedArticle">{{selectedArticle.content}}CSS3 Animations - W3Schools
-https://www.w3schools.com/css/css3_animations.asp
-CSS3 animations allows animation of most HTML elements without using JavaScript or Flash! CSS3 ... When you specify CSS styles inside the @keyframes rule, the animation will .... HTML, CSS, JavaScript, PHP, jQuery, Bootstrap and XML.
-W3.CSS Animations
-https://www.w3schools.com/w3css/w3css_animate.asp
-w3-animate-fading, Animates an element's opacity from 0 to 1 and 1 to 0 (fades in + fade out) ... The w3-animate-top class slides in an element from the top (from -300px to 0): ... HTML, CSS, JavaScript, PHP, jQuery, Bootstrap and XML.
-You visited this page.
-Animate.css
-https://daneden.github.io/animate.css/
-Animate.css. Just-add-water CSS animations. bounce, flash, pulse, rubberBand, shake, swing, tada, wobble, jello, bounceIn, bounceInDown, bounceInLeft ...
-JavaScript · Bootstrap
-getbootstrap.com/javascript/
-Transition.js is a basic helper for transitionEnd events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and ...
-Bootstrap Animate - Bootply
-www.bootply.com/tagged/animate
-</div>
-    </div>
+<div class="productbackground">
+    <div class="row ">
+        <div class="list-group col-2">
+            <li class="list-group-item" *ngFor=" let article of articles">
+                <a class="list-group-item-action" (click)="selectArticle(article)">{{article.title}}</a>
+            </li>
+        </div>
+        <div class="col-10">
+            <div *ngIf="selectedArticle">
+                <h1>
+                    {{selectedArticle.title}}
+                </h1>
+            </div>
+            <div *ngIf="selectedArticle ">
+                <pre><img src="./assets/test-image.jpg" class="float-left"><div [innerHtml]="selectedArticle.content"></div></pre>
+            </div>
+        </div>
     </div>
 </div>
-

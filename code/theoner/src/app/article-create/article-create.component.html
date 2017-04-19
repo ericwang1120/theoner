@@ -60,13 +60,14 @@
                 <div class="col-8 offset-md-1 text-danger" style="height:30px;">
                     <div *ngIf="!content.valid">Content is required</div>
                 </div>
+                <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
 
                 <button type="submit" class="btn btn-primary col-2 offset-1" (click)="onSubmit($event)">Submit</button>
-
             </form>
         </div>
     </div>
 </div>
+
 
 <!--confirm modal-->
 <template #confirmModal let-c="close">
