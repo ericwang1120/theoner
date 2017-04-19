@@ -13,8 +13,8 @@
                     {{selectedArticle.title}}
                 </h1>
             </div>
-            <div *ngIf="selectedArticle ">
-                <pre><img src="./assets/test-image.jpg" class="float-left"><div [innerHtml]="selectedArticle.content"></div></pre>
+            <div *ngIf="selectedArticle">
+                <pre><img *ngIf="path" [src]="path" class="float-left"><div [innerHtml]="selectedArticle.content"></div></pre>
             </div>
         </div>
     </div>

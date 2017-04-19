@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\ArticleImage;
-use App\Article;
 
-use CloudCreativity\LaravelJsonApi\Http\Controllers\JsonApiController;
 use Mockery\CountValidator\Exception;
 
 class ArticleImageController extends Controller
@@ -17,10 +15,10 @@ class ArticleImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($articleId)
     {
         //
-        $articleImages=ArticleImage::all();
+        $articleImages=ArticleImage::where('article_id',$articleId)->get();
 
         return response()->json([
             'data' => $articleImages,
@@ -46,22 +44,31 @@ class ArticleImageController extends Controller
      */
     public function store(Request $request,$articleId)
     {
-        //
-        $requestData=$request->all()['data'][0];
-        try{
-            Article::create([
-                'title'=>$requestData['title'],
-                'display_type'=>$requestData['display_type'],
-                'article_id'=>$articleId
-            ]);
-        } catch (QueryException $ex){
+        if ($request->hasFile('uploadFile')) {
+            $path = $request->file('uploadFile')->store('articleImages');
+            $displayType=$request['displayType'];
+            try{
+                ArticleImage::create([
+                    'store_path'=>$path,
+                    'display_type'=>$displayType,
+                    'article_id'=>$articleId,
+                ]);
+            } catch (QueryException $ex){
+                return response()->json([
+                        'errors'=>array(['details'=>"create image fail"]),]
+                );
+            }
             return response()->json([
-                    'errors'=>array(['details'=>"fail"]),]
-            );
+                'data' => [
+                    'store_path'=>$path,
+                    'display_type'=>$displayType,
+                    'article_id'=>$articleId,
+                ],
+            ]);
         }
         return response()->json([
-            'data' => $requestData,
-        ]);
+                'errors'=>array(['details'=>"fail"]),]
+        );
     }
 
     /**
@@ -98,11 +105,10 @@ class ArticleImageController extends Controller
         //
         $requestData=$request->all()['data'][0];
         try{
-            Article::find($id)->update([
-                'title'=>$requestData['title'],
-                'content'=>$requestData['content'],
-                'type'=>$requestData['type'],
-                'author'=>$requestData['author']
+            ArticleImage::find($id)->update([
+                'store_path'=>$requestData['store_path'],
+                'display_type'=>$requestData['display_type'],
+                'article_id'=>$requestData['article_id'],
             ]);
         } catch (Exception $ex){
             return response()->json([
@@ -124,7 +130,7 @@ class ArticleImageController extends Controller
     {
         //
         try{
-            Article::destroy($id);
+            ArticleImage::destroy($id);
         } catch (Exception $ex){
             return response()->json([
                     'errors'=>array(['details'=>"fail"]),]

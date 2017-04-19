@@ -9,6 +9,8 @@ import 'rxjs/add/operator/filter';
 
 
 import { Article } from './article.model';
+import { Image } from '../image/image.model';
+
 
 declare var API_URL: string;
 
@@ -61,21 +63,29 @@ export class ArticleService {
             .catch(this.handleError);
     }
 
-    uploadImages(event) {
+    getImages(article: Article): Observable<Image[]> {
+        let images = this.http.get(this.articlesUrl + '/' + article.id + '/image')
+            .map(result => result.json().data || {});
+        return images.catch(this.handleError);
+
+    }
+
+    uploadImages(article: Article, event) {
         let fileList: FileList = event.target.files;
         if (fileList.length > 0) {
             let file: File = fileList[0];
             let formData: FormData = new FormData();
             formData.append('uploadFile', file, file.name);
+            formData.append('displayType', '11');
             let headers = new Headers();
-            headers.append('Content-Type', 'multipart/form-data');
             headers.append('Accept', 'application/json');
+
             let options = new RequestOptions({ headers: headers });
-            this.http.post(API_URL, formData, options)
+            this.http.post(this.articlesUrl + '/' + article.id + '/image', formData, options)
                 .map(res => res.json())
                 .catch(error => Observable.throw(error))
                 .subscribe(
-                data => console.log('success'),
+                data => console.log(data),
                 error => console.log(error)
                 )
         }

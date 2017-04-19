@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 
-import { Article, ArticleService } from '../core/article'
+import { Article, ArticleService } from '../core/article';
+import { Image, ImageService } from '../core/image'
+
 import { AlertService } from '../shared/alert/alert.service';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -11,10 +13,11 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   selector: 'article-create',
   templateUrl: 'article-create.component.html',
   styleUrls: ['article-create.component.css'],
-  providers: [ArticleService]
+  providers: [ArticleService, ImageService]
 })
 export class ArticleCreateComponent implements OnInit {
   selectedArticle: Article;
+  selectedImages: Image[];
   articles: Article[];
   submitType = "create";
   errorMessage: String;
@@ -22,7 +25,8 @@ export class ArticleCreateComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private alertService: AlertService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private imageService: ImageService) { }
 
   ngOnInit() {
     this.defaultSelect();
@@ -94,6 +98,16 @@ export class ArticleCreateComponent implements OnInit {
   //Used by users when selecting an article
   selectArticle(article: Article): void {
     this.selectedArticle = article;
+    this.getImages(article);
+  }
+
+  //Get images by selected article
+  getImages(article: Article): void {
+    this.articleService.getImages(article)
+      .subscribe(
+      images => this.selectedImages = images,
+      error => this.errorMessage = <any>error,
+    )
   }
 
   //Used by users when clicking OK
@@ -131,6 +145,6 @@ export class ArticleCreateComponent implements OnInit {
   }
 
   fileChange(event) {
-    this.articleService.uploadImages(event);
+    this.articleService.uploadImages(this.selectedArticle, event);
   }
 }
