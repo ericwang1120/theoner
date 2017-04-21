@@ -60,7 +60,17 @@
                 <div class="col-8 offset-md-1 text-danger" style="height:30px;">
                     <div *ngIf="!content.valid">Content is required</div>
                 </div>
-                <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
+
+                <div class="row">
+                    <div class="col-1 text-right">Left Iamge</div>
+                    <div class="col-5">
+                        <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
+                    </div>
+                    <div class="col-1 text-right">Right Iamge</div>
+                    <div class="col-5">
+                        <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
+                    </div>
+                </div>
 
                 <button type="submit" class="btn btn-primary col-2 offset-1" (click)="onSubmit($event)">Submit</button>
             </form>

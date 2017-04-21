@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-
-import { ArticleService } from '../core/article'
-import { ImageService } from '../core/image'
-
+import { Component } from '@angular/core';  
 import { ArticleFormComponent } from '../shared';
 
 @Component({
@@ -10,7 +6,6 @@ import { ArticleFormComponent } from '../shared';
   selector: 'theoner-product',
   templateUrl: '../shared/article-form/article-form.component.html',
   styleUrls: ['../shared/article-form/article-form.component.css'],
-  providers: [ArticleService,ImageService]
 
 })
 export class ProductComponent extends ArticleFormComponent {

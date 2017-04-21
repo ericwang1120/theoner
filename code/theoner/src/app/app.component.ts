@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { ArticleService } from './core/article'
+import { ImageService } from './core/image'
+
 @Component({
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers:[ArticleService,ImageService],
   animations: [
     trigger('flyInOut', [
       state('in', style({ opacity: 1, transform: 'translateX(0)' })),

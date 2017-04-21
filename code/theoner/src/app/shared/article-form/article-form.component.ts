@@ -9,7 +9,6 @@ import { Image, ImageService } from '../../core/image'
     selector: 'article-form',
     templateUrl: 'article-form.component.html',
     styleUrls: ['article-form.component.css'],
-    providers: [ArticleService, ImageService]
 })
 
 export class ArticleFormComponent implements OnInit {

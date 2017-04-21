@@ -23,7 +23,7 @@ export class ArticleService {
     options = new RequestOptions({ headers: this.headers });
 
     constructor(private http: Http) {
-        console.log(API_URL);
+        // console.log(API_URL);
     }
 
 
@@ -70,26 +70,21 @@ export class ArticleService {
 
     }
 
-    uploadImages(article: Article, event) {
-        let fileList: FileList = event.target.files;
-        if (fileList.length > 0) {
-            let file: File = fileList[0];
-            let formData: FormData = new FormData();
-            formData.append('uploadFile', file, file.name);
-            formData.append('displayType', '11');
-            let headers = new Headers();
-            headers.append('Accept', 'application/json');
+    uploadImages(article: Article, imageData: FormData) {
 
-            let options = new RequestOptions({ headers: headers });
-            this.http.post(this.articlesUrl + '/' + article.id + '/image', formData, options)
-                .map(res => res.json())
-                .catch(error => Observable.throw(error))
-                .subscribe(
-                data => console.log(data),
-                error => console.log(error)
-                )
-        }
+        let headers = new Headers();
+        headers.append('Accept', 'application/json');
+
+        let options = new RequestOptions({ headers: headers });
+        this.http.post(this.articlesUrl + '/' + article.id + '/image', imageData, options)
+            .map(res => res.json())
+            .catch(error => Observable.throw(error))
+            .subscribe(
+            data => console.log(data),
+            error => console.log(error)
+            )
     }
+
     private handleError(error: Response | any) {
         let errMsg: string;
         if (error instanceof Response) {

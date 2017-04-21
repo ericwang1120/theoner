@@ -1,39 +1,32 @@
-li {
+a {
     list-style: none;
     background: none;
     border: 0
-}
-
-a {
-    font-size: 15px;
-    margin: 1.9px 1.9px;
-    text-align: left;
-    border: 0;
-    transition: all 0.5s ease 0s;
 }
 
 a:hover {
     background: grey;
 }
 
-.w3-container {
-    padding-left: 0 !important;
-    margin: 0 !important;
+.active {
+    background: grey;
 }
 
-.w3-panel {
-    padding-left: 0 !important;
-    margin: 0 !important;
+.title-background {
+    background-color: #f2f2f2;
+    position: relative;
+    width: 25%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
-.productbackground {
-    background-image: url("productbackground.jpg");
-    background-size: cover;
-    position: absolute;
-    bottom: 0;
-    top: 55px;
-    left: 0;
-    right: 0;
+.content-background {
+    background-color: white;
+    position: fixed;
+    left: 25%;
+    width: 75%;
+    height: 100%;
 }
 
 pre {

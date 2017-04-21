@@ -18,6 +18,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class ArticleCreateComponent implements OnInit {
   selectedArticle: Article;
   selectedImages: Image[];
+  imageData: FormData = new FormData();
   articles: Article[];
   submitType = "create";
   errorMessage: String;
@@ -144,7 +145,15 @@ export class ArticleCreateComponent implements OnInit {
     return modalTitleMap[type];
   }
 
-  fileChange(event) {
-    this.articleService.uploadImages(this.selectedArticle, event);
+  fileChange(event, displayType?) {
+    let imageList = event.target.files;
+    if (imageList.length > 0) {
+      let file: File = imageList[0];
+      this.imageData.append('uploadFile', file, file.name);
+      this.imageData.append('displayType', "11");
+
+      // console.log(this.imageData;
+    }
+    this.articleService.uploadImages(this.selectedArticle, this.imageData);
   }
 }

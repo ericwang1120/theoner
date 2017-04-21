@@ -21,7 +21,7 @@ export class ImageService {
     options = new RequestOptions({ headers: this.headers });
 
     constructor(private http: Http) {
-        console.log(API_URL);
+        // console.log(API_URL);
     }
 
     deleteImage(image: Image): Observable<any> {

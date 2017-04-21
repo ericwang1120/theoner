@@ -1,0 +1,10 @@
+.home-background {
+    background-image: url("/assets/home.jpg");
+    background-size: cover;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}

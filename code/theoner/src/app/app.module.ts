@@ -22,6 +22,8 @@ import { ServiceModule } from './service/service.module';
 import { SupportModule } from './support/support.module';
 import { SharedModule } from './shared/shared.module';
 import { ArticleCreateModule } from './article-create/article-create.module';
+import { ImageUploadModule } from './image-upload/image-upload.module';
+
 
 
 
@@ -44,6 +46,7 @@ import { ArticleCreateModule } from './article-create/article-create.module';
     ServiceModule,
     SupportModule,
     ArticleCreateModule,
+    ImageUploadModule,
     SharedModule.forRoot(),
     AppRoutingModule
   ],

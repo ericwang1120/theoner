@@ -13,7 +13,7 @@ const { AotPlugin } = require('@ngtools/webpack');
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
-const deployUrl = "/test/";
+const deployUrl = "";
 
 /**
  * Webpack Constants

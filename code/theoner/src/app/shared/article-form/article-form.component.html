@@ -1,13 +1,14 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<div class="productbackground">
-    <div class="row ">
-        <div class="list-group col-2">
-            <li class="list-group-item" *ngFor=" let article of articles">
-                <a class="list-group-item-action" (click)="selectArticle(article)">{{article.title}}</a>
-            </li>
+<!--<div class="article-background">-->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 title-background">
+            <ul class="list-group">
+                <a href="javascript:void(0)" data-target="#something" class="list-group-item list-group-item-action" *ngFor=" let article of articles" [ngClass]="{'active':article==selectedArticle}" (click)="selectArticle(article)">
+                    {{article.title}}
+                </a>
+            </ul>
         </div>
-        <div class="col-10">
+        <div class="col-9 content-background">
             <div *ngIf="selectedArticle">
                 <h1>
                     {{selectedArticle.title}}
@@ -19,3 +20,4 @@
         </div>
     </div>
 </div>
+<!--</div>-->

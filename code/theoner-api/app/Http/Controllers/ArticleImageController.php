@@ -40,6 +40,7 @@ class ArticleImageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  number $articleId
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,$articleId)
