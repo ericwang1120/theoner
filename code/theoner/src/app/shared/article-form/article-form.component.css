@@ -5,28 +5,34 @@ a {
 }
 
 a:hover {
-    background: grey;
+    color: #f2f2f2;
+    background: #4080bf;
 }
 
 .active {
-    background: grey;
+    font-weight: bold;
+    color: #4080bf;
+    background: #f2f2f2
 }
 
 .title-background {
     background-color: #f2f2f2;
-    position: relative;
-    width: 25%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    position: fixed;
+    top: 52px;
+    bottom: 52px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
 }
 
 .content-background {
     background-color: white;
     position: fixed;
-    left: 25%;
-    width: 75%;
-    height: 100%;
+    top: 52px;
+    bottom: 52px;
+    right: 0;
+    left: calc(100% /3);
+    overflow-y: auto;
 }
 
 pre {
