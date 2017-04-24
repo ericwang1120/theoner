@@ -12,13 +12,13 @@ const { AotPlugin } = require('@ngtools/webpack');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
-const baseHref = "";
-const deployUrl = "";
 
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const baseHref = "";
+const deployUrl = "";
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
 const API_URL = process.env.API_URL = 'http://localhost/theoner-api/';
 const METADATA = {
     API_URL: API_URL,
@@ -225,7 +225,7 @@ module.exports = {
         }),
         new ProgressPlugin(),
         new HtmlWebpackPlugin({
-            "template": "./src\\index.ejs",
+            "template": "./src\\index.html",
             "filename": "./index.html",
             "hash": false,
             "inject": true,
@@ -249,10 +249,8 @@ module.exports = {
                     return 0;
                 }
             },
-            baseUrl: process.env.NODE_ENV == 'production' ? '/theoner/' : '/'
-
         }),
-        new BaseHrefWebpackPlugin({}),
+        new BaseHrefWebpackPlugin({ baseHref: baseHref }),
         new CommonsChunkPlugin({
             "name": "inline",
             "minChunks": null
