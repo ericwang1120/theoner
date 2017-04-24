@@ -1,18 +1,25 @@
+/*Title styles*/
+
 a {
     list-style: none;
     background: none;
-    border: 0
+    border: 0;
+    border-radius: 5px;
+    /*border-width: 1px;
+    border-color: grey;*/
 }
 
 a:hover {
     color: #f2f2f2;
-    background: #4080bf;
+    background-color: #4080bf;
+    font-weight: bold;
 }
 
 .active {
     font-weight: bold;
+    background-color: #f2f2f2;
     color: #4080bf;
-    background: #f2f2f2
+    /*border-color: grey;*/
 }
 
 .title-background {
@@ -24,6 +31,9 @@ a:hover {
     right: 0;
     overflow-y: auto;
 }
+
+
+/*content styles*/
 
 .content-background {
     background-color: white;

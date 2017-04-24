@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-4 title-background">
             <ul class="list-group">
-                <a href="javascript:void(0)" data-target="#something" class="list-group-item list-group-item-action" *ngFor=" let article of articles" [ngClass]="{'active':article==selectedArticle}" (click)="selectArticle(article)">
-                        {{article.title}}
-                    </a>
+                <a href="javascript:void(0)" data-target="#something" class="top-space list-group-item list-group-item-action" *ngFor=" let article of articles" [ngClass]="{'active':article==selectedArticle}" (click)="selectArticle(article)">
+                    {{article.title}}
+                </a>
             </ul>
         </div>
         <div class="col-8 content-background">
             <div class="article-content" *ngIf="selectedArticle">
-                <h1>
+                <h2 class="top-space">
                     {{selectedArticle.title}}
-                </h1>
+                </h2>
                 <pre><img *ngIf="path" [src]="path" class="float-left"><div [innerHtml]="selectedArticle.content"></div></pre>
             </div>
         </div>

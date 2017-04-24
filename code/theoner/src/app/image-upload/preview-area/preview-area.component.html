@@ -1,0 +1,27 @@
+<div class="col-6 preview-area-background">
+    <div class="row">
+        <h3 class="top-space"> Preview area</h3>
+    </div>
+    <div class="row">
+        <label class="col-1 form-check-label">
+                <input type="radio" class="form-check-input" name="queryType" value="checkByAll" checked>All
+            </label>
+        <label class="col-2 form-check-label">
+            <input type="radio" class="form-check-input" name="queryType" id="checkByDate" value="option2">Date From:
+        </label>
+        <div class="col-4 input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #startDate="ngbDatepicker">
+            <div class="input-group-addon" (click)="startDate.toggle()">
+                <img src="assets/calendar.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+            </div>
+        </div>
+        To:
+        <div class="col-4 input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #endDate="ngbDatepicker">
+            <div class="input-group-addon" (click)="endDate.toggle()">
+                <img src="assets/calendar.png" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+            </div>
+        </div>
+    </div>
+
+</div>

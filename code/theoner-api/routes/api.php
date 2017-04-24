@@ -13,12 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+//CORS
+header('Access-Control-Allow-Origin: http://localhost:4200');
+header('Access-Control-Allow-Credentials: true');
+
 Route::post('/authenticate','AuthenticateController@authenticate');
 Route::post('/user','UserController@store');
 
 Route::resource('article', 'ArticleController');
 
-Route::post('/article/{articleId}/image','ArticleImageController@store');
+Route::post('/image','ImageController@store');
 Route::delete('/image/{id}','ArticleImageController@destroy');
 Route::put('/image/{id}','ArticleImageController@update');
 Route::get('/article/{articleId}/image','ArticleImageController@index');

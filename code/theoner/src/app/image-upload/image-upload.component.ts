@@ -18,15 +18,8 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   selector: 'image-upload',
   templateUrl: 'image-upload.component.html',
   styleUrls: ['image-upload.component.css'],
-  providers: [ArticleService, ImageService],
 })
 
 export class ImageUploadComponent {
-  public uploader: FileUploader = new FileUploader({ url: URL });
-  public hasBaseDropZoneOver: boolean = false;
-  public hasAnotherDropZoneOver: boolean = false;
 
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
 }

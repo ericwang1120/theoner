@@ -24,6 +24,16 @@ export class ImageService {
         // console.log(API_URL);
     }
 
+    createImage(image: FormData): Observable<any> {
+        let headers = new Headers();
+        headers.append('Accept', 'application/json');
+
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(this.imagesUrl, options).map(result => result.json().data || {})
+            .catch(this.handleError);
+    }
+
     deleteImage(image: Image): Observable<any> {
         return this.http.delete(this.imagesUrl + '/' + image.id, this.options).map(result => result.json().data || {})
             .catch(this.handleError);
@@ -32,9 +42,7 @@ export class ImageService {
     updateImage(image: Image): Observable<Image> {
         return this.http.put(this.imagesUrl + '/' + image.id, JSON.stringify({
             data: [{
-                store_path: image.store_path,
-                display_type: image.display_type,
-                article_id: image.article_id,
+                path: image.path,
             }]
         }), this.options).map(result => result.json().data || {})
             .catch(this.handleError);
