@@ -7,3 +7,8 @@
         left: 50%;
         overflow-y: auto;
     }
+    
+    .img-height {
+        width: 250px;
+        height: 150px;
+    }

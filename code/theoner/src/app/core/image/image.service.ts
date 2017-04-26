@@ -24,27 +24,19 @@ export class ImageService {
         // console.log(API_URL);
     }
 
-    createImage(image: FormData): Observable<any> {
-        let headers = new Headers();
-        headers.append('Accept', 'application/json');
+    getImages(): Observable<Image[]> {
+        return this.http.get(this.imagesUrl, this.options).map(result => result.json().data || {})
+            .catch(this.handleError);
+    }
 
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.post(this.imagesUrl, options).map(result => result.json().data || {})
+    createImage(item: any): Observable<any> {
+        let subject: Observable<Image>;
+        return item.upload().Response.map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
     deleteImage(image: Image): Observable<any> {
-        return this.http.delete(this.imagesUrl + '/' + image.id, this.options).map(result => result.json().data || {})
-            .catch(this.handleError);
-    }
-
-    updateImage(image: Image): Observable<Image> {
-        return this.http.put(this.imagesUrl + '/' + image.id, JSON.stringify({
-            data: [{
-                path: image.path,
-            }]
-        }), this.options).map(result => result.json().data || {})
+        return this.http.delete(this.imagesUrl + '/' + image.id, this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
@@ -59,5 +51,16 @@ export class ImageService {
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+
+
+    private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.access_token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.access_token });
+            headers.append('Content-Type', 'application/json');
+            return new RequestOptions({ headers: headers });
+        }
     }
 }

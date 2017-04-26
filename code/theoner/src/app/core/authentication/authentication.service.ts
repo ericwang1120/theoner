@@ -24,12 +24,10 @@ export class AuthenticationService {
                 "scope": ""
             }), this.options)
             .map((response: Response) => {
-                // login successful if there's a jwt token in the response
                 let user = response.json();
                 console.log(user);
                 if (user && user.access_token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    console.log(user);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
             });

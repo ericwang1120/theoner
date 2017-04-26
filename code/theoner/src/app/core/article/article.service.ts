@@ -19,11 +19,7 @@ export class ArticleService {
     private articlesUrl = API_URL + "api/article";
     private articles: Article[] = [];
 
-    headers = new Headers({ 'Content-Type': 'application/json' });
-    options = new RequestOptions({ headers: this.headers });
-
     constructor(private http: Http) {
-        // console.log(API_URL);
     }
 
 
@@ -42,12 +38,12 @@ export class ArticleService {
                 type: article.type,
                 author: "theoner"
             }]
-        }), this.options).map(result => result.json().data || {})
+        }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
     deleteArticle(article: Article): Observable<any> {
-        return this.http.delete(this.articlesUrl + '/' + article.id, this.options).map(result => result.json().data || {})
+        return this.http.delete(this.articlesUrl + '/' + article.id, this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
@@ -59,7 +55,7 @@ export class ArticleService {
                 type: article.type,
                 author: "theoner"
             }]
-        }), this.options).map(result => result.json().data || {})
+        }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
@@ -76,7 +72,7 @@ export class ArticleService {
         headers.append('Accept', 'application/json');
 
         let options = new RequestOptions({ headers: headers });
-        this.http.post(this.articlesUrl + '/' + article.id + '/image', imageData, options)
+        this.http.post(this.articlesUrl + '/' + article.id + '/image', imageData, this.jwt())
             .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
@@ -96,5 +92,15 @@ export class ArticleService {
         }
         console.error(errMsg);
         return Observable.throw(errMsg);
+    }
+
+    private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.access_token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.access_token });
+            headers.append('Content-Type', 'application/json');
+            return new RequestOptions({ headers: headers });
+        }
     }
 }

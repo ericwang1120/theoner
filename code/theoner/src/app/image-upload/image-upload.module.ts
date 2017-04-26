@@ -13,10 +13,9 @@ import { ImageUploadRoutingModule } from './image-upload-routing.module';
 
 import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-
 @NgModule({
   imports: [CommonModule, ImageUploadRoutingModule, FormsModule, NgbModule, SharedModule],
   declarations: [PreviewAreaComponent, UploadAreaComponent, ImageUploadComponent, FileSelectDirective, FileDropDirective],
-  exports: [ImageUploadComponent]
+  exports: [ImageUploadComponent],
 })
 export class ImageUploadModule { }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
 
 import { Article, ArticleService } from '../../core/article';
 import { Image, ImageService } from '../../core/image'
@@ -24,21 +26,12 @@ declare var API_URL: string;
 
 export class UploadAreaComponent {
   public uploader: FileUploader = new FileUploader({ url: API_URL + "api/image" });
+  errorMessage: String;
 
-  constructor(private imageService: ImageService) {
+
+  constructor(private imageService: ImageService, private router: Router) {
 
   }
-
-
-
-
-
-  // uploadImage(file) {
-  //   let imageList = file;
-  //   this.imageData.append('uploadImage', imageList);
-  //   this.imageService.createImage(this.imageData);
-  //   console.log(imageList);
-  // }
 
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
@@ -47,8 +40,19 @@ export class UploadAreaComponent {
     this.hasBaseDropZoneOver = e;
   }
 
+  public callBackTest(callBack: () => void) {
+    callBack();
+  }
+
   public checkResponse(item: any) {
-    console.log(item);
+    // this.imageService.createImage(item).subscribe(
+    //   image => this.errorMessage = image,
+    //   error => this.errorMessage = <any>error,
+    // );
     item.upload();
+  }
+
+  reloadImages() {
+    console.log("111");
   }
 }

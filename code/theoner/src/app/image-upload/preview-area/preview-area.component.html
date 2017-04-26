@@ -23,5 +23,9 @@
             </div>
         </div>
     </div>
-
+    <div class="row top-space">
+        <div class="col-4 top-space" *ngFor="let image of images">
+            <img class="img-thumbnail img-height" [src]="storageUrl+image.path" alt="">
+        </div>
+    </div>
 </div>

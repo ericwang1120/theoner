@@ -17,12 +17,18 @@ use Illuminate\Http\Request;
 header('Access-Control-Allow-Origin: http://localhost:4200');
 header('Access-Control-Allow-Credentials: true');
 
-Route::post('/authenticate','AuthenticateController@authenticate');
-Route::post('/user','UserController@store');
+Route::group(['middleware' => ['auth:api']], function () {
+    //Articles
+    Route::post('/article','ArticleController@store');
+    Route::delete('/article/{id}','ArticleController@destroy');
+    Route::put('/article/{id}','ArticleController@update');
 
-Route::resource('article', 'ArticleController');
+    //Images
+    Route::delete('/image/{id}','ImageController@destroy');
+});
 
+//Route::post('/user','UserController@store');
 Route::post('/image','ImageController@store');
-Route::delete('/image/{id}','ArticleImageController@destroy');
-Route::put('/image/{id}','ArticleImageController@update');
-Route::get('/article/{articleId}/image','ArticleImageController@index');
+Route::get('/article','ArticleController@index');
+Route::get('/image','ImageController@index');
+

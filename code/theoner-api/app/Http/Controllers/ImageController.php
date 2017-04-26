@@ -8,6 +8,9 @@ use App\Image;
 
 use Mockery\CountValidator\Exception;
 
+use Illuminate\Support\Facades\Storage;
+
+
 class ImageController extends Controller
 {
     /**
@@ -15,10 +18,10 @@ class ImageController extends Controller
      * @param number $articleId
      * @return \Illuminate\Http\Response
      */
-    public function index($articleId)
+    public function index()
     {
         //
-        $images=Image::where('article_id',$articleId)->get();
+        $images=Image::all();
 
         return response()->json([
             'data' => $images,
@@ -124,6 +127,7 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
+        $image=Image::find($id);
         //
         try{
             Image::destroy($id);
@@ -132,6 +136,7 @@ class ImageController extends Controller
                     'errors'=>array(['details'=>"fail"]),]
             );
         }
+        Storage::delete($image['path']);
         return response()->json([
             'data' => array(['details'=>"success"])
         ]);

@@ -12,6 +12,8 @@ import { NotFoundComponent } from './not-found.component';
 
 // import { fakeBackendProvider } from './core/helpers/fack-backend';
 import { AlertService } from './shared/alert/alert.service';
+import { AuthGuard } from './core/authentication/index';
+
 
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
@@ -56,7 +58,8 @@ import { ImageUploadModule } from './image-upload/image-upload.module';
     // MockBackend,
     BaseRequestOptions,
     //providers used to provide alerts
-    AlertService
+    AlertService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -19,7 +19,7 @@ const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "
 const baseHref = "/angular2/";
 const deployUrl = "";
 const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
-const API_URL = process.env.API_URL = 'http://localhost/theoner-api/';
+const API_URL = process.env.API_URL = 'http://www.theoner.com/angular2/backend/';
 const METADATA = {
     API_URL: API_URL,
     ENV: ENV,

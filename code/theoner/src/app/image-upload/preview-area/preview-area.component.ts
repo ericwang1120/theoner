@@ -5,7 +5,7 @@ import { Image, ImageService } from '../../core/image'
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-
+declare const API_URL;
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
@@ -16,6 +16,20 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   styleUrls: ['preview-area.component.css'],
 })
 
-export class PreviewAreaComponent {
+export class PreviewAreaComponent implements OnInit {
+  images: Image[];
+  errorMessage: String;
+  storageUrl=API_URL+'storage/';
 
+
+  constructor(private imageService: ImageService) {
+
+  }
+
+  ngOnInit() {
+    this.imageService.getImages().subscribe(
+      images =>this.images = images,
+      error => this.errorMessage = <any>error,
+    )
+  }
 }

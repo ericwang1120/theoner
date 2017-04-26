@@ -35,27 +35,27 @@ export class ArticleFormComponent implements OnInit {
     }
 
     selectArticle(article: Article): void {
-        this.articleService.getImages(article)
-            .subscribe(
-            images => {
-                this.selectedImages = images;
-                this.selectedArticle = article;
-                if (images[0]) {
-                    this.path = "http://localhost/theoner-api/storage/" + images[0]['store_path'];
-                }else{
-                    this.path=null;
-                }
-            },
-            error => this.errorMessage = <any>error,
-        )
+        // this.articleService.getImages(article)
+        //     .subscribe(
+        //     images => {
+        //         this.selectedImages = images;
+        this.selectedArticle = article;
+        //         if (images[0]) {
+        //             this.path = "http://localhost/theoner-api/storage/" + images[0]['store_path'];
+        //         }else{
+        //             this.path=null;
+        //         }
+        //     },
+        //     error => this.errorMessage = <any>error,
+        // )
     }
 
     //Get images by selected article
-    getImages(article: Article): void {
-        this.articleService.getImages(article)
-            .subscribe(
-            images => this.selectedImages = images,
-            error => this.errorMessage = <any>error,
-        )
-    }
+    // getImages(article: Article): void {
+    //     this.articleService.getImages(article)
+    //         .subscribe(
+    //         images => this.selectedImages = images,
+    //         error => this.errorMessage = <any>error,
+    //     )
+    // }
 }
