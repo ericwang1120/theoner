@@ -4,4 +4,7 @@ export class Article {
     content: string;
     type: string;
     author: string;
+    imagePathLeft: string;
+    imagePathRight: string;
+
 }

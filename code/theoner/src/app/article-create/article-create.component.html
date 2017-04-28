@@ -53,7 +53,7 @@
                 <div class="form-group row">
                     <label for="articleContent" class="col-1 col-form-label">Content</label>
                     <div class="col-11">
-                        <textarea name="content" class="form-control" #content="ngModel" type="text" required id="article-content" placeholder="Please input article content" rows="19" [(ngModel)]="selectedArticle.content"></textarea>
+                        <textarea name="content" class="form-control" #content="ngModel" type="text" required id="article-content" placeholder="Please input article content" rows="14" [(ngModel)]="selectedArticle.content"></textarea>
                     </div>
                 </div>
 
@@ -61,18 +61,37 @@
                     <div *ngIf="!content.valid">Content is required</div>
                 </div>
 
-                <!--<div class="row">
-                    <div class="col-1 text-right">Left Iamge</div>
-                    <div class="col-5">
-                        <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
+                <div class="row">
+                    <div class="col-1 text-left">Left</div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="open(imageModal,'left');getImages();">Choose Image</button>
                     </div>
-                    <div class="col-1 text-right">Right Iamge</div>
-                    <div class="col-5">
-                        <input class="form-control" type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg">
+                    <div class="col-1 text-right">
+                        Path
                     </div>
-                </div>-->
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Choose Image">
+                    </div>
+                </div>
 
-                <button type="submit" class="btn btn-primary col-2 offset-1" (click)="onSubmit($event)">Submit</button>
+                <div class="row top-space">
+                    <div class="col-1 text-left">Right</div>
+                    <div class="col-2">
+                        <button type="button" class="btn btn-secondary" (click)="open(imageModal,'right');getImages();">Choose Image</button>
+                    </div>
+                    <div class="col-1 text-right">
+                        Path
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Choose Image ">
+                    </div>
+                </div>
+
+                <div class="row top-space ">
+                    <div class="col-2 offset-1 ">
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit($event)">Submit</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -83,15 +102,34 @@
 <template #confirmModal let-c="close">
   <div class="modal-header">
     <h4 class="modal-title">{{modalTitle}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="c()">
-      <span aria-hidden="true">&times;</span>
+    <button type="button" class="close" aria-label="Close" (click)="c() ">
+      <span aria-hidden="true ">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <p>Are you sure?</p>
   </div>
   <div class="modal-footer">
-    <button prevent-double-submit type="button" class="btn btn-primary" (click)="confirmSubmit(c())">OK</button>
+    <button prevent-double-submit type="button " class="btn btn-primary " (click)="confirmSubmit(c()) ">OK</button>
+    <button type="button " class="btn btn-secondary " (click)="c() ">Close</button>
+  </div>
+</template>
+
+<!--image modal-->
+<template #imageModal let-c="close ">
+  <div class="modal-header ">
+    <h4 class="modal-title ">{{modalTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="c()">
+      <span aria-hidden="true ">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body ">
+    <div *ngFor="let image of images">
+        <img class="rounded float-left" [src]="storageUrl+image.path">
+    </div>
+  </div>
+  <div class="modal-footer ">
+    <!--<button prevent-double-submit type="button " class="btn btn-primary " (click)="confirmSubmit(c()) ">OK</button>-->
     <button type="button" class="btn btn-secondary" (click)="c()">Close</button>
   </div>
 </template>

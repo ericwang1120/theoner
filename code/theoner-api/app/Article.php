@@ -10,6 +10,8 @@ class Article extends Model
         'title',
         'content',
         'type',
-        'author'
+        'author',
+        'image_path_left',
+        'image_path_right'
     ];
 }

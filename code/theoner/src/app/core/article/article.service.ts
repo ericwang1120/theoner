@@ -36,7 +36,9 @@ export class ArticleService {
                 title: article.title,
                 content: article.content,
                 type: article.type,
-                author: "theoner"
+                author: "theoner",
+                image_path_left: article.imagePathLeft,
+                image_path_right: article.imagePathRight,
             }]
         }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
@@ -53,7 +55,9 @@ export class ArticleService {
                 title: article.title,
                 content: article.content,
                 type: article.type,
-                author: "theoner"
+                author: "theoner",
+                image_path_left: article.imagePathLeft,
+                image_path_right: article.imagePathRight,
             }]
         }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);

@@ -8,6 +8,8 @@ import { AlertService } from '../shared/alert/alert.service';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+declare var API_URL: string;
+
 @Component({
   moduleId: module.id,
   selector: 'article-create',
@@ -16,8 +18,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   providers: [ArticleService, ImageService]
 })
 export class ArticleCreateComponent implements OnInit {
+  storageUrl = API_URL + 'storage/';
+
   selectedArticle: Article;
-  selectedImages: Image[];
+  images: Image[];
   imageData: FormData = new FormData();
   articles: Article[];
   submitType = "create";
@@ -99,14 +103,15 @@ export class ArticleCreateComponent implements OnInit {
   //Used by users when selecting an article
   selectArticle(article: Article): void {
     this.selectedArticle = article;
-    this.getImages(article);
   }
 
   //Get images by selected article
   getImages(article: Article): void {
-    this.articleService.getImages(article)
+    this.imageService.getImages()
       .subscribe(
-      images => this.selectedImages = images,
+      images => {
+      this.images = images;
+      },
       error => this.errorMessage = <any>error,
     )
   }
@@ -128,7 +133,7 @@ export class ArticleCreateComponent implements OnInit {
     }
   }
 
-  //Open confirm model
+  //Open model
   modalTitle: string;
   open(modal, type: string) {
     this.modalService.open(modal);
@@ -141,19 +146,9 @@ export class ArticleCreateComponent implements OnInit {
       "create": "Create Article",
       "update": "Update Article",
       "delete": "Delete Article",
+      "left": "Choose Left Image",
+      "right": "Choose Right Image",
     };
     return modalTitleMap[type];
-  }
-
-  fileChange(event, displayType?) {
-    let imageList = event.target.files;
-    if (imageList.length > 0) {
-      let file: File = imageList[0];
-      this.imageData.append('uploadFile', file, file.name);
-      this.imageData.append('displayType', "11");
-
-      // console.log(this.imageData;
-    }
-    this.articleService.uploadImages(this.selectedArticle, this.imageData);
   }
 }

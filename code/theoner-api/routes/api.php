@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 */
 
 //CORS
-header('Access-Control-Allow-Origin: http://localhost:4200');
+env('FRONT_END_HOST');
+header('Access-Control-Allow-Origin: '.env('FRONT_END_HOST'));
 header('Access-Control-Allow-Credentials: true');
 
 Route::group(['middleware' => ['auth:api']], function () {
