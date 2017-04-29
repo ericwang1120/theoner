@@ -4,7 +4,7 @@ export class Article {
     content: string;
     type: string;
     author: string;
-    imagePathLeft: string;
-    imagePathRight: string;
+    image_path_left: string;
+    image_path_right: string;
 
 }

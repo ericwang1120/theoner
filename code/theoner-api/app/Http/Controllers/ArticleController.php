@@ -54,10 +54,9 @@ class ArticleController extends Controller
             'type'=>$requestData['type'],
             'author'=>$requestData['author'],
             'image_path_left'=>$requestData['image_path_left'],
-            'image_path_right'=>$requestData['image_path_right']
-            
+            'image_path_right'=>$requestData['image_path_right'],
             ]);
-        } catch (QueryException $ex){
+        } catch (Exception $ex){
             return response()->json([
             'errors'=>array(['details'=>"fail"]),]
             );
@@ -105,7 +104,9 @@ class ArticleController extends Controller
             'title'=>$requestData['title'],
             'content'=>$requestData['content'],
             'type'=>$requestData['type'],
-            'author'=>$requestData['author']
+            'author'=>$requestData['author'],
+            'image_path_left'=>$requestData['image_path_left'],
+            'image_path_right'=>$requestData['image_path_right'],
             ]);
         } catch (Exception $ex){
             return response()->json([

@@ -4,6 +4,8 @@ import { OnInit } from '@angular/core';
 import { Article, ArticleService } from '../../core/article'
 import { Image, ImageService } from '../../core/image'
 
+declare const API_URL:string;
+
 @Component({
     moduleId: module.id,
     selector: 'article-form',
@@ -15,7 +17,7 @@ export class ArticleFormComponent implements OnInit {
     articles: Article[];
     selectedArticle: Article;
     selectedImages: Image[];
-    path: string;
+    storagePath=API_URL+'storage/';
     errorMessage: String;
 
     constructor(
@@ -35,27 +37,6 @@ export class ArticleFormComponent implements OnInit {
     }
 
     selectArticle(article: Article): void {
-        // this.articleService.getImages(article)
-        //     .subscribe(
-        //     images => {
-        //         this.selectedImages = images;
         this.selectedArticle = article;
-        //         if (images[0]) {
-        //             this.path = "http://localhost/theoner-api/storage/" + images[0]['store_path'];
-        //         }else{
-        //             this.path=null;
-        //         }
-        //     },
-        //     error => this.errorMessage = <any>error,
-        // )
     }
-
-    //Get images by selected article
-    // getImages(article: Article): void {
-    //     this.articleService.getImages(article)
-    //         .subscribe(
-    //         images => this.selectedImages = images,
-    //         error => this.errorMessage = <any>error,
-    //     )
-    // }
 }

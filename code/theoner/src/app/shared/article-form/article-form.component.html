@@ -12,7 +12,7 @@
                 <h2 class="top-space">
                     {{selectedArticle.title}}
                 </h2>
-                <pre><img *ngIf="path" [src]="path" class="float-left"><div [innerHtml]="selectedArticle.content"></div></pre>
+                <pre><img *ngIf="selectedArticle.image_path_left" [src]="storagePath+selectedArticle.image_path_left" class="float-left"><img *ngIf="selectedArticle.image_path_right" [src]="storagePath+selectedArticle.image_path_right" class="float-right"><div [innerHtml]="selectedArticle.content"></div></pre>
             </div>
         </div>
     </div>

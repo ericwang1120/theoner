@@ -10,7 +10,8 @@ import 'rxjs/add/operator/filter';
 
 import { Image } from './image.model';
 
-declare var API_URL: string;
+declare const API_URL: string;
+declare const ENV: string;
 
 @Injectable()
 export class ImageService {
@@ -36,6 +37,11 @@ export class ImageService {
     }
 
     deleteImage(image: Image): Observable<any> {
+        //Api of free server
+        if (ENV == "development") {
+            return this.http.post(this.imagesUrl + '/' + image.id+"/delete",null, this.jwt()).map(result => result.json().data || {})
+                .catch(this.handleError);
+        }
         return this.http.delete(this.imagesUrl + '/' + image.id, this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }

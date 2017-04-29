@@ -21,10 +21,15 @@ header('Access-Control-Allow-Credentials: true');
 Route::group(['middleware' => ['auth:api']], function () {
     //Articles
     Route::post('/article','ArticleController@store');
-    Route::delete('/article/{id}','ArticleController@destroy');
-    Route::put('/article/{id}','ArticleController@update');
 
+    Route::post('/article/{id}/delete','ArticleController@destroy');
+    Route::delete('/article/{id}','ArticleController@destroy');
+
+    Route::post('/article/{id}','ArticleController@update');
+    Route::put('/article/{id}','ArticleController@update');
+    
     //Images
+    Route::post('/image/{id}/delete','ImageController@destroy');
     Route::delete('/image/{id}','ImageController@destroy');
 });
 
@@ -32,4 +37,3 @@ Route::group(['middleware' => ['auth:api']], function () {
 Route::post('/image','ImageController@store');
 Route::get('/article','ArticleController@index');
 Route::get('/image','ImageController@index');
-

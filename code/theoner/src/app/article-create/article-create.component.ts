@@ -8,7 +8,7 @@ import { AlertService } from '../shared/alert/alert.service';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
-declare var API_URL: string;
+declare const API_URL: string;
 
 @Component({
   moduleId: module.id,
@@ -41,6 +41,8 @@ export class ArticleCreateComponent implements OnInit {
   defaultSelect() {
     this.selectedArticle = new Article();
     this.selectedArticle.type = "product";
+    this.selectedArticle.image_path_left="";
+    this.selectedArticle.image_path_right="";
   }
 
   // Call service funtions
@@ -110,10 +112,30 @@ export class ArticleCreateComponent implements OnInit {
     this.imageService.getImages()
       .subscribe(
       images => {
-      this.images = images;
+        this.images = images;
       },
       error => this.errorMessage = <any>error,
     )
+  }
+
+  //Select images
+  imagePosition: string;
+  chooseImage(image: Image) {
+    if (this.imagePosition == "left") {
+      this.selectedArticle.image_path_left = image.path;
+    }
+    else if (this.imagePosition == "right") {
+      this.selectedArticle.image_path_right = image.path;
+    }
+  }
+
+  clearImage() {
+    if (this.imagePosition == "left") {
+      this.selectedArticle.image_path_left = "";
+    }
+    else if (this.imagePosition == "right") {
+      this.selectedArticle.image_path_right = "";
+    }
   }
 
   //Used by users when clicking OK

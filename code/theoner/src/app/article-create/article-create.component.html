@@ -64,26 +64,26 @@
                 <div class="row">
                     <div class="col-1 text-left">Left</div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-secondary" (click)="open(imageModal,'left');getImages();">Choose Image</button>
+                        <button type="button" class="btn btn-secondary" (click)="imagePosition='left';open(imageModal,'left');getImages();">Choose Image</button>
                     </div>
                     <div class="col-1 text-right">
                         Path
                     </div>
                     <div class="col-8">
-                        <input class="form-control" type="text" placeholder="Choose Image">
+                        <input [(ngModel)]="selectedArticle.image_path_left" name="imagePathLeft" class="form-control" type="text" placeholder="Choose Image" disabled>
                     </div>
                 </div>
 
                 <div class="row top-space">
                     <div class="col-1 text-left">Right</div>
                     <div class="col-2">
-                        <button type="button" class="btn btn-secondary" (click)="open(imageModal,'right');getImages();">Choose Image</button>
+                        <button type="button" class="btn btn-secondary" (click)="imagePosition='right';open(imageModal,'right');getImages();">Choose Image</button>
                     </div>
                     <div class="col-1 text-right">
                         Path
                     </div>
                     <div class="col-8">
-                        <input class="form-control" type="text" placeholder="Choose Image ">
+                        <input [(ngModel)]="selectedArticle.image_path_right" name="imagePathRight" class="form-control" type="text" placeholder="Choose Image " disabled>
                     </div>
                 </div>
 
@@ -125,11 +125,11 @@
   </div>
   <div class="modal-body ">
     <div *ngFor="let image of images">
-        <img class="rounded float-left" [src]="storageUrl+image.path">
+        <img class="rounded float-left" [src]="storageUrl+image.path" (click)="chooseImage(image);c()">
     </div>
   </div>
   <div class="modal-footer ">
-    <!--<button prevent-double-submit type="button " class="btn btn-primary " (click)="confirmSubmit(c()) ">OK</button>-->
+    <button type="button " class="btn btn-secondary " (click)="clearImage();c() ">Clear</button>
     <button type="button" class="btn btn-secondary" (click)="c()">Close</button>
   </div>
 </template>

@@ -12,7 +12,8 @@ import { Article } from './article.model';
 import { Image } from '../image/image.model';
 
 
-declare var API_URL: string;
+declare const API_URL: string;
+declare const ENV;
 
 @Injectable()
 export class ArticleService {
@@ -22,8 +23,6 @@ export class ArticleService {
     constructor(private http: Http) {
     }
 
-
-
     getArticles(type: string): Observable<Article[]> {
         return this.http.get(this.articlesUrl)
             .map(result => result.json().data.filter(data => type == 'all' ? true : data.type == type) || {})
@@ -31,34 +30,49 @@ export class ArticleService {
     }
 
     createArticle(article: Article): Observable<Article> {
+        let data = [{
+            title: article.title,
+            content: article.content,
+            type: article.type,
+            author: "theoner",
+            image_path_left: article.image_path_left,
+            image_path_right: article.image_path_right,
+        }];
+
         return this.http.post(this.articlesUrl, JSON.stringify({
-            data: [{
-                title: article.title,
-                content: article.content,
-                type: article.type,
-                author: "theoner",
-                image_path_left: article.imagePathLeft,
-                image_path_right: article.imagePathRight,
-            }]
+            data:data
         }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
     deleteArticle(article: Article): Observable<any> {
+        //api of free web server
+        if (ENV == "development") {
+            return this.http.post(this.articlesUrl + '/' + article.id + "/delete", null, this.jwt()).map(result => result.json().data || {})
+                .catch(this.handleError);
+        }
         return this.http.delete(this.articlesUrl + '/' + article.id, this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
 
     updateArticle(article: Article): Observable<Article> {
+        let data = [{
+            title: article.title,
+            content: article.content,
+            type: article.type,
+            author: "theoner",
+            image_path_left: article.image_path_left,
+            image_path_right: article.image_path_right,
+        }];
+        //api of free web server
+        if (ENV == "development") {
+            return this.http.post(this.articlesUrl + '/' + article.id, JSON.stringify({
+                data: data
+            }), this.jwt()).map(result => result.json().data || {})
+                .catch(this.handleError);
+        }
         return this.http.put(this.articlesUrl + '/' + article.id, JSON.stringify({
-            data: [{
-                title: article.title,
-                content: article.content,
-                type: article.type,
-                author: "theoner",
-                image_path_left: article.imagePathLeft,
-                image_path_right: article.imagePathRight,
-            }]
+            data: data
         }), this.jwt()).map(result => result.json().data || {})
             .catch(this.handleError);
     }
@@ -70,20 +84,19 @@ export class ArticleService {
 
     }
 
-    uploadImages(article: Article, imageData: FormData) {
+    // uploadImages(article: Article, imageData: FormData) {
+    //     let headers = new Headers();
+    //     headers.append('Accept', 'application/json');
 
-        let headers = new Headers();
-        headers.append('Accept', 'application/json');
-
-        let options = new RequestOptions({ headers: headers });
-        this.http.post(this.articlesUrl + '/' + article.id + '/image', imageData, this.jwt())
-            .map(res => res.json())
-            .catch(error => Observable.throw(error))
-            .subscribe(
-            data => console.log(data),
-            error => console.log(error)
-            )
-    }
+    //     let options = new RequestOptions({ headers: headers });
+    //     this.http.post(this.articlesUrl + '/' + article.id + '/image', imageData, this.jwt())
+    //         .map(res => res.json())
+    //         .catch(error => Observable.throw(error))
+    //         .subscribe(
+    //         data => console.log(data),
+    //         error => console.log(error)
+    //         )
+    // }
 
     private handleError(error: Response | any) {
         let errMsg: string;
