@@ -16,23 +16,20 @@ const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "
 /**
  * Webpack Constants
  */
-const baseHref = "";
+const baseHref = "/theoner/";
 const deployUrl = "";
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const API_URL = process.env.API_URL = 'https://theoner.000webhostapp.com/theoner-api/public/';
+const API_URL = process.env.API_URL = 'http://localhost/theoner-api/';
 const METADATA = {
     API_URL: API_URL,
     ENV: ENV,
 };
 
 module.exports = {
-    "devtool": "source-map",
     devServer: {
-        historyApiFallback: {
-            disableDotRule: true,
-            htmlAcceptHeaders: ['text/html', 'application/xhtml+xml']
-        }
+        historyApiFallback: true
     },
+    "devtool": "source-map",
     "resolve": {
         "extensions": [
             ".ts",
@@ -49,14 +46,14 @@ module.exports = {
     },
     "entry": {
         "main": [
-            "./src\\main.ts"
+            "./src/main.ts"
         ],
         "polyfills": [
-            "./src\\polyfills.ts"
+            "./src/polyfills.ts"
         ],
         "styles": [
-            "./node_modules\\bootstrap\\dist\\css\\bootstrap.min.css",
-            "./src\\styles.css"
+            "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "./src/styles.css"
         ]
     },
     "output": {
@@ -91,8 +88,8 @@ module.exports = {
             },
             {
                 "exclude": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.css$/,
                 "loaders": [
@@ -103,8 +100,8 @@ module.exports = {
             },
             {
                 "exclude": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.scss$|\.sass$/,
                 "loaders": [
@@ -116,8 +113,8 @@ module.exports = {
             },
             {
                 "exclude": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.less$/,
                 "loaders": [
@@ -129,8 +126,8 @@ module.exports = {
             },
             {
                 "exclude": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.styl$/,
                 "loaders": [
@@ -142,8 +139,8 @@ module.exports = {
             },
             {
                 "include": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.css$/,
                 "loaders": ExtractTextPlugin.extract({
@@ -157,8 +154,8 @@ module.exports = {
             },
             {
                 "include": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.scss$|\.sass$/,
                 "loaders": ExtractTextPlugin.extract({
@@ -173,8 +170,8 @@ module.exports = {
             },
             {
                 "include": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.less$/,
                 "loaders": ExtractTextPlugin.extract({
@@ -189,8 +186,8 @@ module.exports = {
             },
             {
                 "include": [
-                    path.join(process.cwd(), "node_modules\\bootstrap\\dist\\css\\bootstrap.min.css"),
-                    path.join(process.cwd(), "src\\styles.css")
+                    path.join(process.cwd(), "node_modules/bootstrap/dist/css/bootstrap.min.css"),
+                    path.join(process.cwd(), "src/styles.css")
                 ],
                 "test": /\.styl$/,
                 "loaders": ExtractTextPlugin.extract({
@@ -218,14 +215,14 @@ module.exports = {
                 "favicon.ico"
             ],
             "globOptions": {
-                "cwd": ".\\src",
+                "cwd": "./src",
                 "dot": true,
                 "ignore": "**/.gitkeep"
             }
         }),
         new ProgressPlugin(),
         new HtmlWebpackPlugin({
-            "template": "./src\\index.html",
+            "template": "./src/index.html",
             "filename": "./index.html",
             "hash": false,
             "inject": true,
@@ -248,7 +245,7 @@ module.exports = {
                 } else {
                     return 0;
                 }
-            },
+            }
         }),
         new BaseHrefWebpackPlugin({ baseHref: baseHref }),
         new CommonsChunkPlugin({
@@ -305,10 +302,10 @@ module.exports = {
         new AotPlugin({
             "mainPath": "main.ts",
             "hostReplacementPaths": {
-                "environments\\environment.ts": "environments\\environment.ts"
+                "environments/environment.ts": "environments/environment.ts"
             },
             "exclude": [],
-            "tsConfigPath": "src\\tsconfig.app.json",
+            "tsConfigPath": "src/tsconfig.app.json",
             "skipCodeGeneration": true
         }),
         new DefinePlugin({

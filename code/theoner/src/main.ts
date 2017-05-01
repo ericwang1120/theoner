@@ -6,7 +6,7 @@ import { environment } from './environments/environment';
 
 declare const ENV;
 
-if (ENV=="production") {
+if (ENV == "production" || ENV =="development") {
   enableProdMode();
 }
 
