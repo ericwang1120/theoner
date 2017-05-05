@@ -16,10 +16,10 @@ const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "
 /**
  * Webpack Constants
  */
-const baseHref = "";
+const baseHref = "/angular2/";
 const deployUrl = "";
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const API_URL = process.env.API_URL = 'http://localhost/theoner-api/';
+const API_URL = process.env.API_URL = 'https://theoner.000webhostapp.com/theoner-api/public/';
 const METADATA = {
     API_URL: API_URL,
     ENV: ENV,
