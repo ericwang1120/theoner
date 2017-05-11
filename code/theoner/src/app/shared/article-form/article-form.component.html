@@ -1,8 +1,12 @@
 <div class="container-fluid">
-    <div class="row">
+    <div *ngIf="loading">
+        <h2>Loading...</h2>
+    </div>
+    <div *ngIf="!loading" class="row">
         <div class="col-4 title-background">
             <ul class="list-group">
-                <a href="javascript:void(0)" data-target="#something" class="top-space list-group-item list-group-item-action" *ngFor=" let article of articles" [ngClass]="{'active':article==selectedArticle}" (click)="selectArticle(article)">
+                <a href="javascript:void(0)" data-target="#something" class="top-space list-group-item list-group-item-action" *ngFor=" let article of articles"
+                    [ngClass]="{'active':article==selectedArticle}" (click)="selectArticle(article)">
                     {{article.title}}
                 </a>
             </ul>

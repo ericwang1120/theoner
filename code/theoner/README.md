@@ -1,5 +1,5 @@
 # Theoner
-This project is the official website of [theoner](http://www.theoner.com/) which is rewitten into Angular 2 and PHP Laravel. Here is the front-end documentation.
+This project is the official website of [theoner](http://www.theoner.com/angular2) which is rewitten into Angular 2 and PHP Laravel. Here is the back-end documentation.
 
 ## Getting Started
 To get you started you can simply clone the `theoner` repository and install the dependencies:
@@ -20,12 +20,32 @@ we can simply do:
 ```
 npm install
 ```
-## Develop on development environment
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Command Lines
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.  
+Run `npm run build` to build the project on production environment. The build artifacts will be stored in the `dist/` directory.  
+Run `npm run build-dev` to build the project on development environment. The build artifacts will be stored in the `dist/` directory.  
+Config files are shown blow
 
-## Build project for production environment
-Run `npm run build` to build the project on production environment. The build artifacts will be stored in the `dist/` directory.
+```
+"webpack.config.js" for "npm start"
+"webpack.config.prod.js" for "npm build"
+"webpack.config.dev.js" for "npm build-dev"
+```
 
-## Running unit tests
-Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Configurations
+There are some webpack config files `webpack.config.js`, `webpack.config.dev.js` and `webpack.config.prod.js`. Some constants can be configured.  
+The 'baseHref' constant can config the 'baseHref' in 'index.html'.
+```
+const baseHref = "";
+```
+The 'ENV' constant can config environment. If it is set to 'production', angular will run on production mode.
+```
+const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+```
+The 'API_URL' constant is used to config the url of API server.
+
+```
+const API_URL = process.env.API_URL = 'http://localhost:8000/';
+```
 

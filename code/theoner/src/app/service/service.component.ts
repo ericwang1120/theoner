@@ -7,9 +7,7 @@ import { ArticleFormComponent } from '../shared';
   moduleId: module.id,
   selector: 'theoner-service',
   templateUrl: '../shared/article-form/article-form.component.html',
-  styleUrls: ['service.component.css'],
-  providers: [ArticleService]
-
+  styleUrls: ['../shared/article-form/article-form.component.css'],
 })
 export class ServiceComponent extends ArticleFormComponent{
   ngOnInit(): void {

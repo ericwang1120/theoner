@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { ArticleFormComponent } from '../shared';
 
 @Component({
   moduleId: module.id,
   selector: 'theoner-support',
-  templateUrl: 'support.component.html',
-  styleUrls: ['support.component.css']
+  templateUrl: '../shared/article-form/article-form.component.html',
+  styleUrls: ['../shared/article-form/article-form.component.css'],
 })
-export class SupportComponent { }
+export class SupportComponent extends ArticleFormComponent {
+  ngOnInit(): void {
+    this.getArticles('support');
+  }
+}

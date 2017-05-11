@@ -4,7 +4,7 @@ import { OnInit } from '@angular/core';
 import { Article, ArticleService } from '../../core/article'
 import { Image, ImageService } from '../../core/image'
 
-declare const API_URL:string;
+declare const API_URL: string;
 
 @Component({
     moduleId: module.id,
@@ -17,8 +17,9 @@ export class ArticleFormComponent implements OnInit {
     articles: Article[];
     selectedArticle: Article;
     selectedImages: Image[];
-    storagePath=API_URL+'storage/';
+    storagePath = API_URL + 'storage/';
     errorMessage: String;
+    loading = false;
 
     constructor(
         private articleService: ArticleService,
@@ -30,10 +31,17 @@ export class ArticleFormComponent implements OnInit {
     }
 
     getArticles(type: string): void {
+        this.loading = true;
         this.articleService.getArticles(type)
             .subscribe(
-            articles => this.articles = articles,
-            error => this.errorMessage = <any>error)
+            articles => {
+                this.articles = articles;
+                this.loading = false;
+            },
+            error => {
+                this.errorMessage = <any>error;
+                this.loading = false;
+            })
     }
 
     selectArticle(article: Article): void {
