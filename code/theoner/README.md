@@ -1,5 +1,5 @@
 # Theoner
-This project is the official website of [theoner](http://www.theoner.com/angular2) which is rewitten into Angular 2 and PHP Laravel. Here is the back-end documentation.
+This project is the official website of [theoner](http://www.theoner.com/angular2) which is rewitten into Angular 2 and PHP Laravel. Here is the front-end documentation.
 
 ## Getting Started
 To get you started you can simply clone the `theoner` repository and install the dependencies:
