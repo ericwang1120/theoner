@@ -1,4 +1,4 @@
-# Theoner official website project
+# Yummy Rabbit official website project
 ## Techniques
 ### Front-end
 #### Framework:
@@ -7,13 +7,13 @@ Angular2
 bootstrap
 @ng-bootstrap/ng-bootstrap
 #### Source code path:
-code/theoner/
+code/yummy-rabbit/
 
 ### Back-end 
 PHP Laravel
 #### Libraries
 Laravel Passport
 #### Source code path:
-code/theoner-api
+code/yummy-rabbit-api
 
 

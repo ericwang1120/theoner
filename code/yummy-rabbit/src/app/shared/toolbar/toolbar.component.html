@@ -1,0 +1,26 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isCollapsed = !isCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/']">Yummy Rabbit</a>
+
+    <div [ngbCollapse]="isCollapsed" class="dropdown-menu dropdown-menu-right bg-inverse">
+        <li *ngFor="let link of linkList">
+            <a (click)="isCollapsed = !isCollapsed" class="nav-link text-white" [routerLink]="link.linkPath" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{link.linkName}}</a>
+        </li>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngFor="let link of linkList">
+                <a class="nav-link" [routerLink]="link.linkPath" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">{{link.linkName}}</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+                <a *ngIf="!checkLoginStatus()" class="nav-link" [routerLink]="['login']">login</a>
+                <a *ngIf="checkLoginStatus()" class="nav-link" (click)="logout()" [routerLink]="['login']">logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

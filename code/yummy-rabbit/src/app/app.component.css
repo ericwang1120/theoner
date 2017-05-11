@@ -1,0 +1,31 @@
+yummy-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 52px;
+}
+
+yummy-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 52px;
+}
+
+yummy-alert {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+:host /deep/ router-outlet+* {
+    position: fixed;
+    top: 52px;
+    bottom: 52px;
+    left: 0;
+    right: 0;
+    font-family: Verdana, Geneva, sans-serif
+}
