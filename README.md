@@ -6,7 +6,8 @@ Angular2
 #### Libraries:
 [twbs/bootstrap](https://github.com/twbs/bootstrap)  
 [ng-bootstrap/ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)  
-[ng2-file-upload](https://github.com/valor-software/ng2-file-upload)
+[ng2-file-upload](https://github.com/valor-software/ng2-file-upload)  
+[compodoc/compodoc](https://github.com/compodoc/compodoc)
 #### Source code path:
 code/yummy-rabbit/
 
