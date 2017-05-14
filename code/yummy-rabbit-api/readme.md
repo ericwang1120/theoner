@@ -55,3 +55,9 @@ run `php artisan db:seed`
 ### Generate Passport Keys
 run `php artisan passport:keys`
 
+## Command Lines
+###Generate api docs
+
+```
+ php artisan api:generate --routePrefix='api/*' --output="../../documentation/api-docs"
+```

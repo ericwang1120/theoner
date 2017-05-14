@@ -16,7 +16,8 @@ toc_footers:
 # Info
 
 Welcome to the generated API reference.
-[Get Postman Collection](http://localhost/docs/collection.json)
+[Get Postman Collection](http://localhost/../../documentation/api-docs/collection.json)
+
 <!-- END_INFO -->
 
 #general
