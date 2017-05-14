@@ -10,7 +10,8 @@
         "doctrine/dbal": "^2.5",
         "laravel/framework": "5.4.*",
         "laravel/passport": "^2.0",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "mpociot/laravel-apidoc-generator": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.3",

@@ -19,7 +19,7 @@ const entryPoints = ["inline", "polyfills", "sw-register", "styles", "vendor", "
 const baseHref = "";
 const deployUrl = "";
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const API_URL = process.env.API_URL = 'http://localhost:8000/';
+const API_URL = process.env.API_URL = 'http://localhost/yummy-rabbit-api/';
 const METADATA = {
     API_URL: API_URL,
     ENV: ENV,

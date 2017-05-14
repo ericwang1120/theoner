@@ -17,7 +17,10 @@ Requirements of Laravel 5.4. [Laravel Requirements](https://laravel.com/docs/5.4
 Clone the `theoner` repository using git:
 ```
 git clone https://github.com/xiaobica/theoner.git
-cd theoner/code/theoner-api
+```
+
+```
+cd theoner/code/yummy-rabbit-api
 ```
 ### Install Dependencies
 we can simply do:
@@ -27,7 +30,10 @@ composer install
 ### Create Database and User
 Create a mysql database for the Project as well as an user.
 ### Rename the .env.example
-You can find a file  named .env.example, rename or copy it into .env
+```
+cp .env.example .env
+```
+
 ### Generate App Key
 run `php artisan key:generate` to generate the app key.
 ### Config Environment

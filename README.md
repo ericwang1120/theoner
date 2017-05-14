@@ -1,4 +1,4 @@
-# Yummy Rabbit official website project
+# Angular2 & Laravel 5.4 Practice
 ## Techniques
 ### Front-end
 #### Framework:
@@ -10,7 +10,7 @@ bootstrap
 code/yummy-rabbit/
 
 ### Back-end 
-PHP Laravel
+PHP Laravel 5.4
 #### Libraries
 Laravel Passport
 #### Source code path:
