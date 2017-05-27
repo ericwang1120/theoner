@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * Store a user
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $user = $request->json("data")[0];

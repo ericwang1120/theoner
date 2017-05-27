@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class ImageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of image.
      * @param number $articleId
      * @return \Illuminate\Http\Response
      */
@@ -29,18 +29,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created image in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  number $articleId
@@ -71,29 +60,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update the specified image in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -120,7 +87,7 @@ class ImageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified image from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

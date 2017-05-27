@@ -14,7 +14,6 @@ import { NotFoundComponent } from './not-found.component';
 import { AlertService } from './shared/alert/alert.service';
 import { AuthGuard } from './core/authentication/index';
 
-
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { AboutModule } from './about/about.module';
@@ -25,9 +24,6 @@ import { SupportModule } from './support/support.module';
 import { SharedModule } from './shared/shared.module';
 import { ArticleCreateModule } from './article-create/article-create.module';
 import { ImageUploadModule } from './image-upload/image-upload.module';
-
-
-
 
 @NgModule({
   declarations: [
